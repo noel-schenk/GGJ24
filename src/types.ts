@@ -21,4 +21,5 @@ export enum Emotion {
 export interface CharacterResponse {
     text: string;
     emotion: Emotion;
+    final: boolean;
 }
