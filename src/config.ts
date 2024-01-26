@@ -1,16 +1,22 @@
-import { Character } from "./Character";
+import { Character, Emotion } from "./types";
 
 export const config = {
   characters: [
     {
       name: "Max",
       systemMessage: "XYZ",
-      demoResponse: "Max antwortet",
+      demoResponse: {
+        emotion: Emotion.HAPPY,
+        text: 'TEST'
+      },
     },
     {
       name: "Hans",
       systemMessage: "XYZ",
-      demoResponse: "Hans antwortet",
+      demoResponse: {
+        emotion: Emotion.HAPPY,
+        text: 'TEST'
+      },
     },
   ] as Character[],
 };

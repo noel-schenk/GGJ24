@@ -1,7 +1,12 @@
+import { vec2 } from "gl-matrix";
 import { StoreApi, UseBoundStore, create } from "zustand";
+import { Tiles } from "./types";
+
 
 const GlobalState = {
   example: "" as string,
+  dt: 0,
+  tiles: [] as Tiles[],
 };
 
 type State = typeof GlobalState;
