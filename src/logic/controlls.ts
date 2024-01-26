@@ -17,7 +17,7 @@ export function resetInput() {
 
 export function tick() {
     const player = useMapState.get('player');
-    if (player.direction !== undefined) {
+    if (player.moveDirection !== undefined) {
         return;
     }
 
@@ -25,22 +25,34 @@ export function tick() {
     const x = (pressed.has('d') ? 1 : 0) + (pressed.has('a') ? -1 : 0);
 
     if (y > 0) {
-        player.direction = Direction.up
+        player.moveDirection = Direction.up
     } else if (y < 0) {
-        player.direction = Direction.down
+        player.moveDirection = Direction.down
     } else if (x > 0) {
-        player.direction = Direction.right
+        player.moveDirection = Direction.right
     } else if (x < 0) {
-        player.direction = Direction.left
+        player.moveDirection = Direction.left
     }
 
-    if (player.direction !== undefined) {
+    if (player.moveDirection !== undefined) {
+        player.direction = player.moveDirection;
+
+        switch (player.moveDirection) {
+            case Direction.up: player.position[1] = player.position[1] + 1; break;
+            case Direction.down: player.position[1] = player.position[1] - 1; break;
+            case Direction.left: player.position[0] = player.position[0] + 1; break;
+            case Direction.right: player.position[0] = player.position[0] - 1; break;
+        }
+
         setTimeout(() => {
-            const player = useMapState.get('player');
-            player.direction = undefined;
-            useMapState.set('player', player);
-        }, config.movementSpeed * 1000)
+            requestAnimationFrame(() => {
+                const player = useMapState.get('player');
+                player.moveDirection = undefined;
+                useMapState.set('player', player);
+            })
+        }, config.movementSpeed * 1000);
+
+        useMapState.set('player', player);
     }
 
-    useMapState.set('player', player);
 }

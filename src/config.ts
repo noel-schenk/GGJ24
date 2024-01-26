@@ -6,7 +6,7 @@ console.log(env.GPT_KEY, "import.meta.env.GPT_KEY");
 export const config = {
   initialView: View.MAIN,
   gptKey: env.GPT_KEY,
-  movementSpeed: 1,
+  movementSpeed: 0.3,
   characters: [
     {
       name: "Max",

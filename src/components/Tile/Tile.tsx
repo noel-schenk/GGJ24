@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { TileWrapper } from './Tile.styled';
 import { Direction, Tiles } from '../../types';
 import { vec2 } from 'gl-matrix';
-import clsx from 'clsx';
 
 interface TileProps {
    tile: Tiles;
@@ -10,18 +9,15 @@ interface TileProps {
    direction: Direction | undefined;
 }
 
-const Tile: FC<TileProps> = ({ tile, direction, position }) => (
-   <TileWrapper className={clsx({
-      move: direction !== undefined,
-      up: direction === Direction.up,
-      down: direction === Direction.down,
-      left: direction === Direction.left,
-      right: direction === Direction.right,
-   })} style={{
-      left: `${position?.[0] + tile.position[0]}em`,
-      top: `${position?.[1] + tile.position[1]}em`,
+const Tile: FC<TileProps> = ({ tile }) => (
+   <TileWrapper style={{
+      left: `${tile.position[0]}em`,
+      top: `${tile.position[1]}em`,
       backgroundImage: tile.image && `url(${tile.image})`,
-   }}>
+      backgroundPositionX: `${tile.offset?.[0]}em`,
+      backgroundPositionY: `${tile.offset?.[1]}em`,
+   }}
+      onClick={() => { console.log(tile.position.toString()) }}>
    </TileWrapper>
 );
 

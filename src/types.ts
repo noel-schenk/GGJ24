@@ -40,6 +40,7 @@ export enum Direction {
 
 
 export interface Player {
-    direction: Direction | undefined;
+    direction: Direction;
+    moveDirection: Direction | undefined;
     position: vec2;
 }
