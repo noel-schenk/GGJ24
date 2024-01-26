@@ -24,6 +24,11 @@ export const sendMessage = async (message: string) => {
     emotion: getEmotion(res.text),
     final: isInteractionFinal(res.text),
   };
+
+  useGlobalState.set(
+    "newCharacterResponse",
+    useGlobalState.get("newCharacterResponse") + 1
+  );
 };
 
 const generateSystemMessage = (character: Character) => {

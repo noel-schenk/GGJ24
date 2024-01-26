@@ -7,15 +7,17 @@ interface ChatProps {}
 const Chat: FC<ChatProps> = () => {
    const [chatInput, setChatInput] = useState('');
 
-   const onEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      event.stopPropagation()
       if (event.key === 'Enter') {
+         setChatInput('')
          sendMessage(chatInput)
       }
    }
 
    return <ChatWrapper>
-      <input type='text' value={chatInput} onKeyDown={onEnter} onChange={(e) => setChatInput(e.target.value)} />
-      <button onClick={() => sendMessage(chatInput)}>Senden</button>
+      <input className='Chat__Input' type='text' value={chatInput} onKeyDown={onKeyDown} onChange={(e) => setChatInput(e.target.value)} />
+      <button className='Chat__Button' onClick={() => {sendMessage(chatInput), setChatInput('')}}>Senden</button>
    </ChatWrapper>
 };
 

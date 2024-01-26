@@ -7,6 +7,7 @@ const GlobalState = {
   activeCharacter: {} as Character,
   gptKey: "" as string,
   show: [] as View[],
+  newCharacterResponse: 0 as number,
 };
 
 type State = typeof GlobalState;

@@ -22,21 +22,10 @@ export interface CharacterResponse {
   final: boolean;
 }
 
-export enum Emotion {
-  HAPPY,
-  SAD,
-}
-
 export enum View {
   CHAT,
   MENU,
   MAIN,
-}
-
-export interface CharacterResponse {
-  text: string;
-  emotion: number;
-  final: boolean;
 }
 
 export enum Direction {

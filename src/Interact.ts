@@ -8,8 +8,11 @@ export const interact = async (
     useGlobalState.set("show", [View.MAIN, View.CHAT]);
     useGlobalState.set("interact", true);
     useGlobalState.set("activeCharacter", character);
-    useGlobalState.subscribe("activeCharacter", () => {
-      console.log(useGlobalState.get("activeCharacter").response);
+    useGlobalState.subscribe("newCharacterResponse", () => {
+      console.log(
+        "new activeCharacter response",
+        useGlobalState.get("activeCharacter").response
+      );
       resolve(useGlobalState.get("activeCharacter").response);
     });
   });
