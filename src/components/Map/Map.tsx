@@ -30,8 +30,6 @@ const Map: FC<MapProps> = () => {
       }
    }, [state.dt]);
 
-   console.log(state.player.position?.toString());
-
    return <MapWrapper ref={mapRef as any}>
       <RootScene
          className={clsx({
@@ -41,8 +39,8 @@ const Map: FC<MapProps> = () => {
             left: state.player.moveDirection === Direction.left,
             right: state.player.moveDirection === Direction.right,
          })} style={{
-            left: `calc(50vw - 0.5em + ${state.player.position[0]}em)`,
-            top: `calc(50vh - 0.5em + ${state.player.position[1]}em)`,
+            left: `calc(50vw - 0.5em + ${-state.player.position[0]}em)`,
+            top: `calc(50vh - 0.5em + ${-state.player.position[1]}em)`,
          }}
       >
          {state.tiles.map((tile) => {
