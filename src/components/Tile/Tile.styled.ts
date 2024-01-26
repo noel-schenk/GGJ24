@@ -8,5 +8,5 @@ export const TileWrapper = styled.div`
     contain: strict;
     content-visibility: auto;
 
-    background-size: 4em;
+    background-size: 5em;
 `;
