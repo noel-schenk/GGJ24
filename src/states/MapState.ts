@@ -1,13 +1,15 @@
 import { StoreApi, UseBoundStore, create } from "zustand";
-import { CharacterResponse, Direction, Emotion, Player, Tiles } from "../types";
+import { Character, Direction, InteractionData, Player, Tiles } from "../types";
 import { vec2 } from "gl-matrix";
 import { createDummyTile } from "../components/Tile/Tile";
+
 
 const MapState = {
   dt: 0,
   map: {
     haveMap: false,
     collisions: new Map<string, number>(),
+    interactions: new Map<string, InteractionData>(),
   },
   tiles: [
     createDummyTile(),

@@ -8,5 +8,15 @@ export const TileWrapper = styled.div`
     contain: strict;
     content-visibility: auto;
 
-    background-size: 5em;
+    background-size: 10em;
+`;
+
+export const MessageWrapper = styled.div`
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    contain: strict;
+    content-visibility: auto;
+
+    background-size: 10em;
 `;

@@ -3,6 +3,8 @@ import { DemoMap } from "../data/DemoMap";
 import useMapState from "../states/MapState";
 import image from '../assets/spriteatlas.png';
 import { vec2 } from "gl-matrix";
+import { Character, InteractionData } from "../types";
+import config from "../config";
 
 export enum CollisionType {
     BLOCK,
@@ -14,12 +16,16 @@ const tileOffsets = {
     m: vec2.fromValues(-1, 0),
     g: vec2.fromValues(-2, 0),
     t: vec2.fromValues(-3, 0),
+    0: vec2.fromValues(-1, -4),
+    1: vec2.fromValues(-1, -4),
 }
 const tileCollision = {
     b: CollisionType.BLOCK,
     m: CollisionType.BLOCK,
     g: CollisionType.BLOCK,
     t: CollisionType.BLOCK,
+    0: CollisionType.BLOCK,
+    1: CollisionType.BLOCK,
 }
 
 export function generateMap(mapData = DemoMap) {
@@ -31,6 +37,7 @@ export function generateMap(mapData = DemoMap) {
     let y = 0;
 
     const collisions: Map<string, number> = new Map();
+    const interactions: Map<string, InteractionData> = new Map();
 
     mapData.split('\n').filter(s => s.length > 0).forEach(line => {
         line.split('').forEach(char => {
@@ -46,6 +53,15 @@ export function generateMap(mapData = DemoMap) {
                 const tile = createTile(offset && image, offset, vec2.fromValues(x, y));
                 tiles.push(tile);
                 collisions.set(`${x}:${y}`, collision);
+
+                if (!Number.isNaN(parseInt(char))) {
+                    // spawn a NPC
+                    interactions.set(`${x}:${y}`, {
+                        character: config.characters[parseInt(char)],
+                        tile: tile,
+                        active: true,
+                    });
+                }
             }
             x++;
         })
@@ -55,5 +71,6 @@ export function generateMap(mapData = DemoMap) {
 
     map.haveMap = true;
     map.collisions = collisions;
+    map.interactions = interactions;
     useMapState.set('map', map);
 }

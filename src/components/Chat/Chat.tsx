@@ -1,11 +1,14 @@
 import { FC, useState } from 'react';
 import { ChatWrapper } from './Chat.styled';
 import { sendMessage } from '../../GPT';
+import useGlobalState from '../../GlobalState';
+import { View } from '../../types';
 
-interface ChatProps {}
+interface ChatProps { }
 
 const Chat: FC<ChatProps> = () => {
    const [chatInput, setChatInput] = useState('');
+   const state = useGlobalState();
 
    const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       event.stopPropagation()
@@ -14,10 +17,13 @@ const Chat: FC<ChatProps> = () => {
          sendMessage(chatInput)
       }
    }
+   const onBlur = () => {
+      state.set('show', [View.MAIN]);
+   }
 
    return <ChatWrapper>
-      <input className='Chat__Input' type='text' value={chatInput} onKeyDown={onKeyDown} onChange={(e) => setChatInput(e.target.value)} />
-      <button className='Chat__Button' onClick={() => {sendMessage(chatInput), setChatInput('')}}>Senden</button>
+      <input autoFocus className='Chat__Input' type='text' value={chatInput} onKeyDown={onKeyDown} onChange={(e) => setChatInput(e.target.value)} onBlur={onBlur} />
+      <button className='Chat__Button' onClick={() => { sendMessage(chatInput), setChatInput('') }}>Senden</button>
    </ChatWrapper>
 };
 

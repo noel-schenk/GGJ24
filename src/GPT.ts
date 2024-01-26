@@ -1,9 +1,11 @@
 import { ChatGPTAPI } from "chatgpt";
 import useGlobalState from "./GlobalState";
-import { Character } from "./types";
+import { Character, View } from "./types";
 import config from "./config";
 
 export const sendMessage = async (message: string) => {
+  useGlobalState.set("show", [View.MAIN]);
+
   const api = new ChatGPTAPI({
     apiKey: useGlobalState.get("gptKey"),
     systemMessage: generateSystemMessage(useGlobalState.get("activeCharacter")),

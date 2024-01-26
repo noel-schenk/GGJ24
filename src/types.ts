@@ -5,6 +5,7 @@ export interface Tiles {
   position: vec2;
   image: string;
   offset: vec2;
+  message: string;
 }
 
 export interface Character {
@@ -39,4 +40,10 @@ export interface Player {
   direction: Direction;
   moveDirection: Direction | undefined;
   position: vec2;
+}
+
+export interface InteractionData {
+  character: Character,
+  tile: Tiles,
+  active: boolean,
 }
