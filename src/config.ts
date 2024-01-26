@@ -2,7 +2,7 @@ import env from "./env";
 import { Character, View } from "./types";
 
 export const config = {
-  initialView: View.MAIN,
+  initialView: View.MENU,
   gptKey: env.GPT_KEY,
   basisSystemMessage: `
     Du bist eine Spielfigur, wie sie unten beschrieben ist.
