@@ -18,8 +18,6 @@ function App() {
 
   return (
     <>
-     test
-      {state.show}
       {state.show.includes(View.MENU) && <Menu />}
       {state.show.includes(View.CHAT) && <Chat />}
       {state.show.includes(View.MAIN) && <Main />}

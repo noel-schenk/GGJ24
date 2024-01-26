@@ -4,8 +4,9 @@ import { Character, Emotion, View } from "./types";
 console.log(env.GPT_KEY, "import.meta.env.GPT_KEY");
 
 export const config = {
-  initialView: View.MENU,
+  initialView: View.MAIN,
   gptKey: env.GPT_KEY,
+  movementSpeed: 1,
   characters: [
     {
       name: "Max",

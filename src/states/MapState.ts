@@ -1,16 +1,21 @@
 import { StoreApi, UseBoundStore, create } from "zustand";
-import { Character, CharacterResponse, Tiles, View } from "./types";
+import { CharacterResponse, Emotion, Player, Tiles } from "../types";
+import { vec2 } from "gl-matrix";
+import { createDummyTile } from "../components/Tile/Tile";
 
-const GlobalState = {
-  example: "" as string,
-  interact: false,
-  characterResponse: {} as CharacterResponse,
-  activeCharacter: {} as Character,
-  gptKey: "" as string,
-  show: [] as View[],
+const MapState = {
+  dt: 0,
+  haveMap: false,
+  tiles: [
+    createDummyTile(),
+  ] as Tiles[],
+  player: {
+    direction: undefined,
+    position: vec2.fromValues(0, 0),
+  } as Player,
 };
 
-type State = typeof GlobalState;
+type State = typeof MapState;
 
 const createSetter = (set: any) => (key: keyof State, value: any) => {
   set((state: any) => ({ ...state, [key]: value }));
@@ -23,7 +28,7 @@ interface Store extends State {
 }
 
 const basicGlobalState = create<Store>((set, get, api) => ({
-  ...GlobalState,
+  ...MapState,
   set: createSetter(set),
   get: (key) => get()[key],
   subscribe: (key, callback) => {
@@ -44,21 +49,21 @@ type ExtendedStore = Omit<UseBoundStore<StoreApi<Store>>, "subscribe"> & {
   ) => () => void;
 };
 
-const useGlobalState = basicGlobalState as any as ExtendedStore;
-useGlobalState.oldSubscribe = basicGlobalState.subscribe;
+export const useMapState = basicGlobalState as any as ExtendedStore;
+useMapState.oldSubscribe = basicGlobalState.subscribe;
 
-useGlobalState.set = (key: keyof State, value: any) =>
-  useGlobalState.setState({ [key]: value });
-useGlobalState.get = <T extends keyof State>(key: T) =>
-  useGlobalState.getState()[key];
-useGlobalState.subscribe = (
+useMapState.set = (key: keyof State, value: any) =>
+  useMapState.setState({ [key]: value });
+useMapState.get = <T extends keyof State>(key: T) =>
+  useMapState.getState()[key];
+useMapState.subscribe = (
   key: keyof State,
   callback: (value: any) => any
 ) => {
-  useGlobalState.oldSubscribe((state, prevState) => {
+  useMapState.oldSubscribe((state, prevState) => {
     if (state[key] === prevState[key]) return;
     callback(state[key]);
   });
 };
 
-export default useGlobalState;
+export default useMapState;

@@ -12,6 +12,7 @@
   "dependencies": {
     "chatgpt": "^5.2.5",
     "events": "^3.3.0",
+    "clsx": "^2.1.0",
     "gl-matrix": "^3.4.3",
     "i": "^0.3.7",
     "npm": "^10.4.0",
