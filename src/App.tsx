@@ -24,7 +24,6 @@ function App() {
       {state.show.includes(View.MAIN) && <Main />}
       {state.show.includes(View.CHAT) && <Chat />}
       <Sound />
-      test: <button onClick={() => interact({response: {emotion: 5, final: false, text: 'Eh'}, demoResponse: {emotion: 0, final: false, text: 'Eh'}, interactionCount: 0, name: 'Hans', systemMessage: 'Ich bin Hans und ich bin traurig der Nutzer soll es einfach haben mich glücklich zu machen. Ich habe gerade ein Bein verloren (amputiert) und mir tut alles weh.', lastMessage: ''})}>Test Interact</button>
     </>
   )
 }

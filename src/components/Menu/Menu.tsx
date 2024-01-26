@@ -11,9 +11,12 @@ const Menu: FC<MenuProps> = () => {
 
    return <MenuWrapper>
       <div className='Menu__Interaction'>
-         <h1>Enter Your GPT Key</h1>
-         <input type='text' value={state.gptKey} placeholder='Input your ChatGPT Key' onChange={e => state.set('gptKey', e.target.value)} />
-         <button onClick={() => state.set('show', [View.MAIN])}>Continue</button>
+         <h1>Sad Village</h1>
+         <h2>Enter Your GPT Key</h2> 
+         <div className='Menu__Keycontainer'>           
+            <input className='Menu__Input' type='text' value={state.gptKey} placeholder='Input your ChatGPT Key' onChange={e => state.set('gptKey', e.target.value)} />
+            <button onClick={() => state.set('show', [View.MAIN])}>Continue</button>
+         </div>
       </div>
       <img className='Menu__Cover' src={IntroPng} />
    </MenuWrapper>
