@@ -12,10 +12,15 @@ export const MenuWrapper = styled.div`
   }
 
   .Menu__Interaction {
-    width: calc(100% - 20px);
+    width: 80%;
+    margin: 0 auto;
     padding: 40px 20px;
-    background: #ffffffa6;
+    background: #ffffffe8;
     border-radius: 20px;
+  }
+
+  p {
+    font-weight: bold;
   }
 
   .Menu__Keycontainer {
@@ -25,7 +30,7 @@ export const MenuWrapper = styled.div`
 
   .Menu__Input {
     width: 100%;
-    height: 30px;
+    height: 50px;
     font-size: 14px;
     border-radius: 14px;
     border: none;
