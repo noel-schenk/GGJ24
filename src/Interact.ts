@@ -6,7 +6,8 @@ export const interact = async (
 ): Promise<CharacterResponse> => {
   return new Promise<CharacterResponse>((resolve) => {
     useGlobalState.set("interact", true);
-    useGlobalState.subscribe("characterResponse", () => {});
-    resolve(character.demoResponse);
+    useGlobalState.subscribe("characterResponse", () => {
+      resolve(character.demoResponse);
+    });
   });
 };
