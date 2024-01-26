@@ -18,8 +18,7 @@ export const RootScene = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    // transform: translateX(calc(50vw - 0.5em)) translateY(calc(50vh - 0.5em));
-
+    
     &.move {
         animation-duration: ${(config.movementSpeed * 1.01).toFixed(5)}s;
         animation-fill-mode: both;
@@ -39,40 +38,20 @@ export const RootScene = styled.div`
     }
 
     @keyframes anim-tile-up {
-        0%   {
-            transform: translateY(-1em);
-        }
-        100%   {
-            transform: translateY(0);
-        }
-        
+        0%   { transform: translateY(-1em); }
+        100%   { transform: translateY(0); }
     }
     @keyframes anim-tile-down {
-        0%   {
-            transform: translateY(1em);
-        }
-        100%   {
-            transform: translateY(0);
-        }
-        
+        0%   { transform: translateY(1em); }
+        100%   { transform: translateY(0); }
     }
     @keyframes anim-tile-right {
-        0%   {
-            transform: translateX(1em);
-        }
-        100%   {
-            transform: translateX(0);
-        }
-        
+        0%   { transform: translateX(1em); }
+        100%   { transform: translateX(0); }
     }
     @keyframes anim-tile-left {
-        0%   {
-            transform: translateX(-1em);
-        }
-        100%   {
-            transform: translateX(0);
-        }
-        
+        0%   { transform: translateX(-1em); }
+        100%   { transform: translateX(0); }
     }
 `;
 
@@ -85,18 +64,10 @@ export const Player = styled.div`
     transform: translateX(calc(50vw - 0.5em)) translateY(calc(50vh - 0.5em));
     background: url(${image});
     background-size: 5em;
-    background-position-y:1em;
+    background-position-y:-1em;
 
-    &.up {
-        background-position-x:4em;
-    }
-    &.down {
-        background-position-x:3em;
-    }
-    &.left {
-        background-position-x:2em;
-    }
-    &.right {
-        background-position-x:1em;
-    }
+    &.up { background-position-x:-0em; }
+    &.down { background-position-x:-1em; }
+    &.left { background-position-x:-2em; }
+    &.right { background-position-x:-3em; }
 `;
