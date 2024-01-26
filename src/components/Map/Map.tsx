@@ -10,7 +10,7 @@ const Map: FC<MapProps> = () => {
 
    return <MapWrapper>
       {state.tiles.map((tile) => {
-         return <Tile tile={tile} />
+         return <Tile tile={tile} key={tile.index} />
       })}
    </MapWrapper>
 };

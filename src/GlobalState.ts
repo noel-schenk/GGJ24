@@ -1,10 +1,14 @@
 import { StoreApi, UseBoundStore, create } from "zustand";
 import { CharacterResponse, Emotion, Tiles } from "./types";
+import { createDummyTile } from "./components/Tile/Tile";
 
 const GlobalState = {
   example: "" as string,
   dt: 0,
-  tiles: [] as Tiles[],
+  haveMap: false,
+  tiles: [
+    createDummyTile(),
+  ] as Tiles[],
   interact: false,
   characterResponse: { text: "", emotion: Emotion.HAPPY } as CharacterResponse,
 };
