@@ -19,9 +19,9 @@ const Tile: FC<TileProps> = ({ tile, direction, position }) => (
       right: direction === Direction.right,
    })} style={{
       left: `${position?.[0] + tile.position[0]}em`,
-      right: `${position?.[1] + tile.position[1]}em`
+      top: `${position?.[1] + tile.position[1]}em`,
+      backgroundImage: tile.image && `url(${tile.image})`,
    }}>
-
    </TileWrapper>
 );
 

@@ -17,14 +17,12 @@ export function resetInput() {
 
 export function tick() {
     const player = useMapState.get('player');
-    if (player.direction) {
+    if (player.direction !== undefined) {
         return;
     }
 
     const y = (pressed.has('w') ? 1 : 0) + (pressed.has('s') ? -1 : 0);
     const x = (pressed.has('d') ? 1 : 0) + (pressed.has('a') ? -1 : 0);
-
-    console.log(y, x)
 
     if (y > 0) {
         player.direction = Direction.up
@@ -36,7 +34,7 @@ export function tick() {
         player.direction = Direction.left
     }
 
-    if (player.direction) {
+    if (player.direction !== undefined) {
         setTimeout(() => {
             const player = useMapState.get('player');
             player.direction = undefined;

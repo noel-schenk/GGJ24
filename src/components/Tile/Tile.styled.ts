@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import config from '../../config';
 
 export const TileWrapper = styled.div`
-    --tw-bg: black;
-
-    background: var(--tw-bg);
     width: 1em;
     height: 1em;
+    position: absolute;
+    contain: strict;
+    content-visibility: auto;
+
+    background-size: 400px;
 
     &.move {
         animation-duration: ${config.movementSpeed.toFixed(5)}s;

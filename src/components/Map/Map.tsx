@@ -12,7 +12,7 @@ const Map: FC<MapProps> = () => {
    const state = useMapState();
 
    useEffect(() => {
-      if (!state.haveMap) {
+      if (!state.map.haveMap) {
          // generate Map
          generateMap();
       }

@@ -5,7 +5,9 @@ import { createDummyTile } from "../components/Tile/Tile";
 
 const MapState = {
   dt: 0,
-  haveMap: false,
+  map: {
+    haveMap: false,
+  },
   tiles: [
     createDummyTile(),
   ] as Tiles[],
