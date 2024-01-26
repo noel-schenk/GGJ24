@@ -1,17 +1,21 @@
 import env from "./env";
-import { Character, Emotion, View } from "./types";
-
-console.log(env.GPT_KEY, "import.meta.env.GPT_KEY");
+import { Character, View } from "./types";
 
 export const config = {
   initialView: View.MENU,
   gptKey: env.GPT_KEY,
+  basisSystemMessage: `
+    Du bist eine Spielfigur, wie sie unten beschrieben ist.
+    Du wirst nur mit dem antworten, was dieser Charakter antworten würde.
+    Die einzige Ausnahme ist, wenn das Gespräch beendet werden soll, weil ein normaler Charakter das Gespräch an dieser Stelle beenden würde. In diesem Fall füge irgendwo in der Antwort ein [END] ein.
+    Füge auch immer ein [EMOTION:0] bis [EMOTION:10] Tag hinzu, um anzugeben, wie glücklich sich der Charakter gerade fühlt. Aber immer max. 1 EMOTION Tag pro Antwort. 0 ist todes traurig und 10 ist super glücklich.
+  `,
   characters: [
     {
       name: "Max",
       systemMessage: "XYZ",
       demoResponse: {
-        emotion: Emotion.HAPPY,
+        emotion: 0,
         text: "TEST",
       },
     },
@@ -19,7 +23,7 @@ export const config = {
       name: "Hans",
       systemMessage: "XYZ",
       demoResponse: {
-        emotion: Emotion.HAPPY,
+        emotion: 0,
         text: "TEST",
       },
     },

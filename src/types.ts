@@ -1,3 +1,4 @@
+import { ChatGPTAPI } from "chatgpt";
 import { vec2 } from "gl-matrix";
 
 export interface Tiles {
@@ -10,17 +11,15 @@ export interface Tiles {
 export interface Character {
   name: string;
   systemMessage: string;
+  lastMessage: string;
+  interactionCount: number;
   demoResponse: CharacterResponse;
-}
-
-export enum Emotion {
-  HAPPY,
-  SAD,
+  response: CharacterResponse;
 }
 
 export interface CharacterResponse {
   text: string;
-  emotion: Emotion;
+  emotion: number;
   final: boolean;
 }
 

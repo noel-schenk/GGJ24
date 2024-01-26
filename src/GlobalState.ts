@@ -1,5 +1,5 @@
 import { StoreApi, UseBoundStore, create } from "zustand";
-import { Character, CharacterResponse, Tiles, View } from "./types";
+import { Character, Tiles, View } from "./types";
 import { createDummyTile } from "./components/Tile/Tile";
 
 const GlobalState = {
@@ -8,7 +8,6 @@ const GlobalState = {
   haveMap: false,
   tiles: [createDummyTile()] as Tiles[],
   interact: false,
-  characterResponse: {} as CharacterResponse,
   activeCharacter: {} as Character,
   gptKey: "" as string,
   show: [] as View[],
