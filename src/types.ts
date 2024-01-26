@@ -1,4 +1,3 @@
-import { ChatGPTAPI } from "chatgpt";
 import { vec2 } from "gl-matrix";
 
 export interface Tiles {
@@ -23,8 +22,31 @@ export interface CharacterResponse {
   final: boolean;
 }
 
+export enum Emotion {
+  HAPPY,
+  SAD,
+}
+
 export enum View {
   CHAT,
   MENU,
   MAIN,
+}
+
+export interface CharacterResponse {
+  text: string;
+  emotion: number;
+  final: boolean;
+}
+
+export enum Direction {
+  up,
+  down,
+  left,
+  right,
+}
+
+export interface Player {
+  direction: Direction | undefined;
+  position: vec2;
 }
