@@ -11,8 +11,11 @@ const Menu: FC<MenuProps> = () => {
 
    return <MenuWrapper>
       <div className='Menu__Interaction'>
-         <h1>The Laughter of Sad Village</h1>
-         <p>In Sad Village, where gloom reigns, you arrive with a mission of joy. Your task: to uplift hearts through song, craft, and play. The villagers await your magic touch to turn their sadness into laughter and break the ancient curse. The journey to transform Sad Village into Joyous Hamlet begins with you.</p>
+         <h1>Freude im Traurigen Dorf</h1>
+         <p>In einem Dorf, so trüb und leer,<br/>
+            kamst du her, die Herzen schwer.<br/>
+            Dein Ziel so klar, ein lichter Schein,<br/>
+            bringt Lachen und Freude rein.</p>
          <h2>Enter Your GPT Key</h2> 
          <div className='Menu__Keycontainer'>           
             <input className='Menu__Input' type='text' value={state.gptKey} placeholder='Input your ChatGPT Key' onChange={e => state.set('gptKey', e.target.value)} />
