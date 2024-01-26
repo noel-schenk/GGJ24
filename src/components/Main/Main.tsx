@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { MainWrapper } from './Main.styled';
 import Map from '../Map/Map';
-import useGlobalState from '../../GlobalState';
 
 interface MainProps { }
 
