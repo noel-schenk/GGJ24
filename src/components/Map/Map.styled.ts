@@ -63,7 +63,7 @@ export const Player = styled.div`
     height: 1em;
     transform: translateX(calc(50vw - 0.5em)) translateY(calc(50vh - 0.5em));
     background: url(${image});
-    background-size: 5em;
+    background-size: 10em;
     background-position-y:-1em;
 
     &.up { background-position-x:-0em; }

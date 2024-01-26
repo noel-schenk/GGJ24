@@ -18,6 +18,7 @@ const Tile: FC<TileProps> = ({ tile }) => (
       backgroundPositionY: `${tile.offset?.[1]}em`,
    }}
       onClick={() => { console.log(tile.position.toString()) }}>
+      {tile.message && <></>}
    </TileWrapper>
 );
 

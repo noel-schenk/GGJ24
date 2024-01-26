@@ -3,15 +3,24 @@ import config from "../config";
 import useMapState from "../states/MapState";
 import { Direction } from "../types";
 import { CollisionType } from "./map";
+import { interact } from "../Interact";
 
 const tmp = vec2.create();
 let pressed: Set<string> = new Set();
 
 // Interactions
 export function keyDownHandler(event: KeyboardEvent) {
+    if (!(['F5'].includes(event.key))) {
+        event.preventDefault();
+    }
+    if (event.key === ' ') {
+        handleInteraction();
+        return;
+    }
     pressed.add(event.key);
 }
 export function keyUpHandler(event: KeyboardEvent) {
+    event.preventDefault();
     pressed.delete(event.key);
 }
 export function resetInput() {
@@ -68,4 +77,43 @@ export function tick() {
         useMapState.set('player', player);
     }
 
+}
+
+export function handleInteraction() {
+    const player = useMapState.get("player");
+    const map = useMapState.get("map");
+    const offsets = [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+    ];
+    for (let offset of offsets) {
+        vec2.add(tmp, player.position, offset as vec2);
+        if (map.interactions.has(`${tmp[0]}:${tmp[1]}`)) {
+            // we have interaction
+            const data = map.interactions.get(`${tmp[0]}:${tmp[1]}`);
+            if (data && data.active) {
+                const { character, tile } = data;
+                interact(character).then(({ emotion, final, text }) => {
+                    tile.message = text;
+                    if (emotion < 2) {
+                        data.active = false;
+                        return;
+                    }
+                    if (emotion > 9) {
+                        tile.offset[1] += 1;
+                        data.active = false;
+                        return;
+                    }
+                    if (final) {
+                        data.active = false;
+                        return;
+                    }
+                    handleInteraction();
+                });
+            }
+            return;
+        }
+    }
 }
