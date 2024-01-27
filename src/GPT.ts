@@ -11,7 +11,7 @@ export const sendMessage = async (message: string) => {
     systemMessage: generateSystemMessage(useGlobalState.get("activeCharacter")),
     fetch: self.fetch.bind(self),
     completionParams: {
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
     },
   });
 
