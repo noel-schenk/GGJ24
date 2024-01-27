@@ -7,6 +7,7 @@ import { View } from './types'
 import { useEffect } from 'react'
 import config from './config';
 import Sound from './components/Sound/Sound'
+import End from './components/End/End'
 
 function App() {
   const state = useGlobalState()
@@ -17,6 +18,8 @@ function App() {
     state.set('gptKey', config.gptKey)
     state.set('gptModel', config.gptModel)
 
+    // useGlobalState.set('show', [View.MAIN, View.END])
+
     useGlobalState.set('characters', config.characters);
     useGlobalState.set("activeCharacter", 0)
   }, [])
@@ -26,6 +29,7 @@ function App() {
       {state.show.includes(View.MENU) && <Menu />}
       {state.show.includes(View.MAIN) && <Main />}
       {state.show.includes(View.CHAT) && <Chat />}
+      {state.show.includes(View.END) && <End />}
       <Sound />
     </>
   )
