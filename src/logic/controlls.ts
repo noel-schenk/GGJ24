@@ -10,113 +10,122 @@ let pressed: Set<string> = new Set();
 
 // Interactions
 export function keyDownHandler(event: KeyboardEvent) {
-    if (!(['F5'].includes(event.key))) {
-        event.preventDefault();
-    }
-    if (event.key === ' ') {
-        handleInteraction();
-        return;
-    }
-    pressed.add(event.key);
+  if (!["F5"].includes(event.key)) {
+    event.preventDefault();
+  }
+  if (event.key === " ") {
+    handleInteraction();
+    return;
+  }
+  pressed.add(event.key);
 }
 export function keyUpHandler(event: KeyboardEvent) {
-    event.preventDefault();
-    pressed.delete(event.key);
+  event.preventDefault();
+  pressed.delete(event.key);
 }
 export function resetInput() {
-    pressed.clear();
+  pressed.clear();
 }
 
 export function tick() {
-    const player = useMapState.get('player');
-    if (player.moveDirection !== undefined) {
-        return;
+  const player = useMapState.get("player");
+  if (player.moveDirection !== undefined) {
+    return;
+  }
+
+  const y = (pressed.has("w") ? 1 : 0) + (pressed.has("s") ? -1 : 0);
+  const x = (pressed.has("d") ? 1 : 0) + (pressed.has("a") ? -1 : 0);
+
+  if (y > 0) {
+    player.moveDirection = Direction.up;
+  } else if (y < 0) {
+    player.moveDirection = Direction.down;
+  } else if (x > 0) {
+    player.moveDirection = Direction.right;
+  } else if (x < 0) {
+    player.moveDirection = Direction.left;
+  }
+
+  if (player.moveDirection !== undefined) {
+    player.direction = player.moveDirection;
+
+    vec2.copy(tmp, player.position);
+
+    switch (player.moveDirection) {
+      case Direction.up:
+        player.position[1] = player.position[1] - 1;
+        break;
+      case Direction.down:
+        player.position[1] = player.position[1] + 1;
+        break;
+      case Direction.left:
+        player.position[0] = player.position[0] - 1;
+        break;
+      case Direction.right:
+        player.position[0] = player.position[0] + 1;
+        break;
     }
 
-    const y = (pressed.has('w') ? 1 : 0) + (pressed.has('s') ? -1 : 0);
-    const x = (pressed.has('d') ? 1 : 0) + (pressed.has('a') ? -1 : 0);
-
-    if (y > 0) {
-        player.moveDirection = Direction.up
-    } else if (y < 0) {
-        player.moveDirection = Direction.down
-    } else if (x > 0) {
-        player.moveDirection = Direction.right
-    } else if (x < 0) {
-        player.moveDirection = Direction.left
+    const map = useMapState.get("map");
+    const target = map.collisions.get(
+      `${player.position[0]}:${player.position[1]}`
+    );
+    if (target === CollisionType.BLOCK) {
+      // we are colliding
+      vec2.copy(player.position, tmp);
+      player.moveDirection = undefined;
+    } else {
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          const player = useMapState.get("player");
+          player.moveDirection = undefined;
+          useMapState.set("player", player);
+        });
+      }, config.movementSpeed * 1000);
     }
 
-    if (player.moveDirection !== undefined) {
-        player.direction = player.moveDirection;
-
-        vec2.copy(tmp, player.position);
-
-        switch (player.moveDirection) {
-            case Direction.up: player.position[1] = player.position[1] - 1; break;
-            case Direction.down: player.position[1] = player.position[1] + 1; break;
-            case Direction.left: player.position[0] = player.position[0] - 1; break;
-            case Direction.right: player.position[0] = player.position[0] + 1; break;
-        }
-
-        const map = useMapState.get('map');
-        const target = map.collisions.get(`${player.position[0]}:${player.position[1]}`);
-        if (target === CollisionType.BLOCK) {
-            // we are colliding
-            vec2.copy(player.position, tmp);
-            player.moveDirection = undefined
-        } else {
-            setTimeout(() => {
-                requestAnimationFrame(() => {
-                    const player = useMapState.get('player');
-                    player.moveDirection = undefined;
-                    useMapState.set('player', player);
-                })
-            }, config.movementSpeed * 1000);
-        }
-
-        useMapState.set('player', player);
-    }
-
+    useMapState.set("player", player);
+  }
 }
 
 export function handleInteraction() {
-    const player = useMapState.get("player");
-    const map = useMapState.get("map");
-    const offsets = [
-        [0, 1],
-        [0, -1],
-        [1, 0],
-        [-1, 0],
-    ];
-    for (let offset of offsets) {
-        vec2.add(tmp, player.position, offset as vec2);
-        if (map.interactions.has(`${tmp[0]}:${tmp[1]}`)) {
-            // we have interaction
-            const data = map.interactions.get(`${tmp[0]}:${tmp[1]}`);
-            if (data && data.active) {
-                const { character, tile } = data;
-                interact(character).then(({ emotion, final, text }) => {
-                    tile.message = text;
-                    useMapState.set('dt', Date.now());
-                    if (emotion < 2) {
-                        data.active = false;
-                        vec2.copy(tile.offset, character.tiles.angry);
-                        return;
-                    }
-                    if (emotion > 6) {
-                        tile.offset[1] += 1;
-                        data.active = false;
-                        vec2.copy(tile.offset, character.tiles.happy);
-                        return;
-                    }
-                    if (final) {
-                        data.active = false;
-                        return;
-                    }
-                    handleInteraction();
-                });
-            }
+  const player = useMapState.get("player");
+  const map = useMapState.get("map");
+  const offsets = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
+  for (let offset of offsets) {
+    vec2.add(tmp, player.position, offset as vec2);
+    if (map.characters.has(`${tmp[0]}:${tmp[1]}`)) {
+      // we have interaction
+      const character = map.characters.get(`${tmp[0]}:${tmp[1]}`);
+      if (character && character.active) {
+        const { tile } = character;
+        interact(character).then(({ emotion, final, text }) => {
+          tile.message = text;
+          useMapState.set("dt", Date.now());
+          if (emotion < 2) {
+            character.active = false;
+            vec2.copy(tile.offset, character.tiles.angry);
             return;
-        }
+          }
+          if (emotion > 6) {
+            tile.offset[1] += 1;
+            character.active = false;
+            vec2.copy(tile.offset, character.tiles.happy);
+            return;
+          }
+          if (final) {
+            character.active = false;
+            return;
+          }
+          handleInteraction();
+        });
+      }
+      return;
     }
+  }
 }

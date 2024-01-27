@@ -15,6 +15,9 @@ function App() {
   useEffect(() => {
     state.set('show', [config.initialView])
     state.set('gptKey', config.gptKey)
+
+    useGlobalState.set('characters', config.characters);
+    useGlobalState.set("activeCharacter", 0)
   }, [])
 
   return (

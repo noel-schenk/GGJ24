@@ -23,6 +23,8 @@ export interface Character {
   voice: string;
   pitch: number;
   rate: number;
+  active: boolean;
+  tile: Tiles;
 }
 
 export interface CharacterResponse {
@@ -49,10 +51,4 @@ export interface Player {
   direction: Direction;
   moveDirection: Direction | undefined;
   position: vec2;
-}
-
-export interface InteractionData {
-  character: Character;
-  tile: Tiles;
-  active: boolean;
 }

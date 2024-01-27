@@ -3,11 +3,18 @@ import { Character, View } from "./types";
 
 const GlobalState = {
   example: "" as string,
-  activeCharacter: {} as Character,
+  activeCharacter: 0 as number,
+  characters: [] as Array<Character>,
   gptKey: "" as string,
   show: [] as View[],
   "activeCharacter--response": 0 as number,
   score: 0 as number,
+};
+
+export const getActiveCharacter = () => {
+  return useGlobalState.get("characters")[
+    useGlobalState.get("activeCharacter")
+  ];
 };
 
 type State = typeof GlobalState;

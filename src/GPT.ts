@@ -1,5 +1,5 @@
 import { ChatGPTAPI } from "chatgpt";
-import useGlobalState from "./GlobalState";
+import useGlobalState, { getActiveCharacter } from "./GlobalState";
 import { Character, View } from "./types";
 import config from "./config";
 
@@ -8,7 +8,7 @@ export const sendMessage = async (message: string) => {
 
   const api = new ChatGPTAPI({
     apiKey: useGlobalState.get("gptKey"),
-    systemMessage: generateSystemMessage(useGlobalState.get("activeCharacter")),
+    systemMessage: generateSystemMessage(getActiveCharacter()),
     fetch: self.fetch.bind(self),
     completionParams: {
       model: "gpt-3.5-turbo",
@@ -24,9 +24,9 @@ export const sendMessage = async (message: string) => {
   isLaughing(res.text) &&
     useGlobalState.set("score", useGlobalState.get("score") + 1);
 
-  useGlobalState.get("activeCharacter").lastMessage = res.text;
-  useGlobalState.get("activeCharacter").interactionCount++;
-  useGlobalState.get("activeCharacter").response = {
+  getActiveCharacter().lastMessage = res.text;
+  getActiveCharacter().interactionCount++;
+  getActiveCharacter().response = {
     text: getText(res.text),
     emotion: getEmotion(res.text),
     final: isInteractionFinal(res.text),
@@ -74,5 +74,5 @@ const getEmotion = (message: string): number => {
 };
 
 const getLastEmotion = () => {
-  return useGlobalState.get("activeCharacter").response.emotion;
+  return getActiveCharacter().response.emotion;
 };

@@ -1,14 +1,13 @@
 import { StoreApi, UseBoundStore, create } from "zustand";
-import { Direction, InteractionData, Player, Tiles } from "../types";
+import { Character, Direction, Player, Tiles } from "../types";
 import { vec2 } from "gl-matrix";
-
 
 const MapState = {
   dt: 0,
   map: {
     haveMap: false,
     collisions: new Map<string, number>(),
-    interactions: new Map<string, InteractionData>(),
+    characters: new Map<string, Character>(),
   },
   tiles: [] as Tiles[],
   player: {
@@ -59,10 +58,7 @@ useMapState.set = (key: keyof State, value: any) =>
   useMapState.setState({ [key]: value });
 useMapState.get = <T extends keyof State>(key: T) =>
   useMapState.getState()[key];
-useMapState.subscribe = (
-  key: keyof State,
-  callback: (value: any) => any
-) => {
+useMapState.subscribe = (key: keyof State, callback: (value: any) => any) => {
   useMapState.oldSubscribe((state, prevState) => {
     if (state[key] === prevState[key]) return;
     callback(state[key]);

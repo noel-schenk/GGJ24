@@ -1,5 +1,5 @@
 import { Character, CharacterResponse, View } from "./types";
-import useGlobalState from "./GlobalState";
+import useGlobalState, { getActiveCharacter } from "./GlobalState";
 import { playTTS } from "./TTS";
 
 let resolve: any;
@@ -7,7 +7,10 @@ let resolve: any;
 export const interact = async (
   character: Character
 ): Promise<CharacterResponse> => {
-  useGlobalState.set("activeCharacter", character);
+  useGlobalState.set(
+    "activeCharacter",
+    useGlobalState.get("characters").indexOf(character)
+  );
   console.log(character);
   return new Promise<CharacterResponse>((r) => {
     useGlobalState.set("show", [View.MAIN, View.CHAT]);
@@ -19,16 +22,10 @@ useGlobalState.subscribe("activeCharacter--response", () => {
   if (!resolve) {
     return;
   }
-  console.log(
-    "new activeCharacter response",
-    useGlobalState.get("activeCharacter").response
-  );
+  console.log("new activeCharacter response", getActiveCharacter().response);
 
-  playTTS(
-    useGlobalState.get("activeCharacter").response.text,
-    useGlobalState.get("activeCharacter").voice
-  );
+  playTTS(getActiveCharacter().response.text, getActiveCharacter().voice);
 
-  resolve(useGlobalState.get("activeCharacter").response);
+  resolve(getActiveCharacter().response);
   resolve = undefined;
 });

@@ -1,4 +1,4 @@
-import useGlobalState from "./GlobalState";
+import { getActiveCharacter } from "./GlobalState";
 
 let voices = speechSynthesis.getVoices();
 setTimeout(() => {
@@ -10,12 +10,13 @@ export const playTTS = (message: string, voice = "Google Nederlands") => {
     const synth = speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(message);
 
-    console.log(voice, useGlobalState.get('activeCharacter'));
+    console.log(voice, getActiveCharacter());
 
-    utterance.pitch = useGlobalState.get('activeCharacter')?.pitch ?? 1;
-    utterance.rate = useGlobalState.get('activeCharacter')?.rate ?? 1;
+    utterance.pitch = getActiveCharacter().pitch ?? 1;
+    utterance.rate = getActiveCharacter().rate ?? 1;
 
-    utterance.voice = voices.find((ssvoice) => ssvoice.name === voice) ||
+    utterance.voice =
+      voices.find((ssvoice) => ssvoice.name === voice) ||
       voices.find((ssvoice) => ssvoice.lang === "de-DE")!;
 
     synth.speak(utterance);
