@@ -6,7 +6,7 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  width: 100%
+  width: 100%;
 }
 
 .logo {
@@ -43,4 +43,24 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.fun {
+  animation: drunk-fun;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@keyframes drunk-fun {
+  0% {
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+    filter: blur(2px) hue-rotate(180deg);
+  }
+  100% {
+    filter: blur(0px) hue-rotate(360deg);
+  }
 }

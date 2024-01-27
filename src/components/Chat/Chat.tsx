@@ -37,26 +37,36 @@ const Chat: FC<ChatProps> = () => {
 
       setChatInput(event.target.value)
 
-      if(event.target.value === 'edit') {
+      if (event.target.value === 'edit') {
          setEditMode(true)
          setChatInput('')
       }
 
-      if(event.target.value === 'zombie') {
+
+      if (event.target.value === 'zombie') {
+         document.querySelector('body')!.classList.remove('fun');
          document.querySelector('body')!.style.filter = 'hue-rotate(180deg)';
          useGlobalState.set('altMode', 'zombie')
          reloadConfigSystemMessage();
       }
 
-      if(event.target.value === 'hate') {
-         document.querySelector('body')!.style.filter = 'invert(1)';
+      if (event.target.value === 'hate') {
+         document.querySelector('body')!.classList.remove('fun');
+         document.querySelector('body')!.style.filter = 'grayscale(1)';
          useGlobalState.set('altMode', 'hate')
          reloadConfigSystemMessage();
       }
 
-      if(event.target.value === 'laugh') {
+      if (event.target.value === 'laugh') {
+         document.querySelector('body')!.classList.remove('fun');
          document.querySelector('body')!.style.filter = 'saturate(2)';
          useGlobalState.set('altMode', 'laugh')
+         reloadConfigSystemMessage();
+      }
+
+      if (event.target.value === 'fun') {
+         document.querySelector('body')!.classList.add('fun');
+         useGlobalState.set('altMode', 'fun')
          reloadConfigSystemMessage();
       }
    }

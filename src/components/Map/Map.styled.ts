@@ -29,6 +29,13 @@ export const MapBackground = styled.div`
   height: 500em;
   background-size: 1em;
   z-index: -1;
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+
+
+  &.Map__ZoomOut {
+    opacity: 0;
+  }
 
   &.move {
     animation-duration: ${(config().movementSpeed * 1.01).toFixed(5)}s;

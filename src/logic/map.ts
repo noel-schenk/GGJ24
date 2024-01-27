@@ -104,7 +104,6 @@ export function mapTick() {
         }
         character.tile!.offsetDyn![0] = offset;
         useMapState.set("dt", Date.now());
-        console.log(character.tile!.offsetDyn);
       }
     }
   });

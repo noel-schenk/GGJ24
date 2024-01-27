@@ -6,6 +6,7 @@ import { CharactersHate } from "./config.hate.prod";
 import env from "./env";
 import { View } from "./types";
 import { CharactersLaugh } from "./config.laugh.prod";
+import { CharactersFun } from "./config.fun.prod";
 
 const testing = false;
 
@@ -17,6 +18,8 @@ const altMode = () => {
       return CharactersHate;
     case "laugh":
       return CharactersLaugh;
+    case "fun":
+      return CharactersFun;
   }
   return CharactersZombie;
 };

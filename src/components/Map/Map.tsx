@@ -39,6 +39,7 @@ const Map: FC<MapProps> = () => {
    })} ref={mapRef as any}>
       <MapBackground
          className={clsx({
+            'Map__ZoomOut': gState.show.includes(View.END),
             move: state.player.moveDirection !== undefined,
             up: state.player.moveDirection === Direction.up,
             down: state.player.moveDirection === Direction.down,

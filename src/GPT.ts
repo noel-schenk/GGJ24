@@ -46,7 +46,7 @@ const generateSystemMessage = (character: Character) => {
 };
 
 const getText = (message: string): string => {
-  return message.replaceAll(/\[.*?]/g, "").replaceAll(/\EMOTION:\d+?]/g, '');
+  return message.replaceAll(/\[.*?]/g, "").replaceAll(/\EMOTION:\d+/g, '');
 };
 
 const isInteractionFinal = (message: string): boolean => {
