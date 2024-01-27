@@ -11,7 +11,6 @@ const Score: FC<ScoreProps> = () => {
 
   useEffect(() => {
    state.subscribe('score', () => {
-      console.log(state.score, 'state.score');
       confetti();
       const player = new Audio(Laugh);
       player.volume = 0.1;
