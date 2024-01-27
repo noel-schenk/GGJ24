@@ -162,9 +162,8 @@ export const config = {
         text: "Eh",
       },
       interactionCount: 0,
-      name: "Franzose",
-      systemMessage:
-        "Du bist wie sich die Deutschen ein Franzose vorstellt. Du redest in gebrochenem Französisch-Deutsch und bist eine mega Lusche. Du hast Angst vor allem und bist ne mega Tunte!",
+      name: "UWU",
+      systemMessage: "Du redest nur in UWU voice.",
       lastMessage: "",
       tiles: {
         start: [-3, -2],
