@@ -1,25 +1,25 @@
 export const DemoMap = `
-   bbbbbbbbbbbbbbbbbbbbbb
-  bb     6      b       b
- bb             b  bb   b
-bb   bbbbb     bbbbb    b
-b            bbbbbbb 5  b
-b           bbbbbbbb    b
-b987   s       bbbbbb   b
-b               bb      b
-b    /\\                 b
-b   /||\\        /\\      b
-b   |==|       /||\\     b
-b   |=#|       |==|     b
-b            3g|=#|4    b
-mm                      b
-mmm             t 1     b
-m mmm                   b
-m   mmm                 b
-m     mmmmm             b
-m         mm            b
-m          m 0          b
-mm  2                   b
-mmm        m           8b
-mmmmmmmmmmmmbbbbbbbbbbbbb
+   bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  bb     6      b       bbbbbbbbb
+ bb             b  bb   bbbbbbbbb
+bb   bbbbb     bbbbb     bbbbbbbb
+b            bbbbbbb 5    bbbbbbb
+b           bbbbbbbb      bbbbbbb
+b987   s       bbbbbb    bbbbbbbb
+b               bb      bbbbbbbbb
+b    /\\                  bbbbbbbb
+b   /||\\        /\\       bbbbbbbb
+b   |==|       /||\\     bbbbbbbbb
+b   |=#|       |==|    bbbbbbbbbb
+b            3g|=#|4    bbbbbbbbb
+mmm                      bbbbbbbb
+mmmm            t 1     bbbbbbbbb
+m mmmm                  bbbbbbbbb
+m   mmmmmmm       b    bbbbbbbbbb
+m     mmmmm        bbbbbbbbbbbbbb
+m         mm          bbbbbbbbbbb
+m          m 0        bbbbbbbbbbb
+mm  2                bbbbbbbbbbbb
+mmm        m     bbbbbbbbbbbbbbbb
+mmmmmmmmmmmmbbbbbbbbbbbbbbbbbbbbb
 `;
