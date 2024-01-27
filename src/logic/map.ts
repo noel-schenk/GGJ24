@@ -18,14 +18,15 @@ const tileOffsets = {
     t: vec2.fromValues(-3, 0),
     0: vec2.fromValues(-1, -4),
     1: vec2.fromValues(-2, -6),
+    2: vec2.fromValues(-3, -2),
+    '|': vec2.fromValues(-4, 0),
+    '/': vec2.fromValues(-5, 0),
+    '\\': vec2.fromValues(-6, 0),
+    '=': vec2.fromValues(-7, 0),
+    '#': vec2.fromValues(-8, 0),
 }
 const tileCollision = {
-    b: CollisionType.BLOCK,
-    m: CollisionType.BLOCK,
-    g: CollisionType.BLOCK,
-    t: CollisionType.BLOCK,
-    0: CollisionType.BLOCK,
-    1: CollisionType.BLOCK,
+    '#': CollisionType.OVERLAP,
 }
 
 export function generateMap(mapData = DemoMap) {
@@ -48,7 +49,7 @@ export function generateMap(mapData = DemoMap) {
                 useMapState.set('player', player);
             }
             const offset = tileOffsets[char as keyof typeof tileOffsets];
-            const collision = tileCollision[char as keyof typeof tileCollision];
+            const collision = tileCollision[char as keyof typeof tileCollision] ?? CollisionType.BLOCK;
             if (offset) {
                 const tile = createTile(offset && image, offset, vec2.fromValues(x, y));
                 tiles.push(tile);

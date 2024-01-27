@@ -100,11 +100,13 @@ export function handleInteraction() {
                     useMapState.set('dt', Date.now());
                     if (emotion < 2) {
                         data.active = false;
+                        vec2.copy(tile.offset, character.tiles.angry);
                         return;
                     }
                     if (emotion > 6) {
                         tile.offset[1] += 1;
                         data.active = false;
+                        vec2.copy(tile.offset, character.tiles.happy);
                         return;
                     }
                     if (final) {
