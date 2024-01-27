@@ -14,7 +14,7 @@ export interface Character {
   lastMessage: string;
   interactionCount: number;
   demoResponse: CharacterResponse;
-  response: CharacterResponse;
+  response?: CharacterResponse;
   tiles: {
     start: [number, number];
     happy: [number, number];
@@ -24,15 +24,15 @@ export interface Character {
   voice: string;
   pitch: number;
   rate: number;
-  active: boolean;
-  tile: Tiles;
+  active?: boolean;
+  tile?: Tiles;
 }
 
 export interface CharacterResponse {
   text: string;
   emotion: number;
   final: boolean;
-  laugh: boolean;
+  laugh?: boolean;
 }
 
 export enum View {

@@ -5,7 +5,7 @@ export const DemoMap = `
 bb   bbbbb     bbbb     b
 b    m g t 1      b  4  b
 b                 b     b
-b  7   s    0     bbb   b
+b987   s    0     bbb   b
 b                       b
 b    /\\                 b
 b   /||\\        /\\      b

@@ -18,6 +18,7 @@ export const RootScene = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
+    transform: translateY(0);
     
     &.move {
         animation-duration: ${(config.movementSpeed * 1.01).toFixed(5)}s;
