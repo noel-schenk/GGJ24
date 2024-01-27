@@ -1,8 +1,8 @@
 import { Character, CharacterResponse, View } from "./types";
 import useGlobalState from "./GlobalState";
+import { playTTS } from "./TTS";
 
 let resolve: any;
-
 
 export const interact = async (
   character: Character
@@ -22,7 +22,10 @@ useGlobalState.subscribe("newCharacterResponse", () => {
   console.log(
     "new activeCharacter response",
     useGlobalState.get("activeCharacter").response
-  ); resolve
+  );
+
+  playTTS(useGlobalState.get("activeCharacter").response.text);
+
   resolve(useGlobalState.get("activeCharacter").response);
   resolve = undefined;
 });

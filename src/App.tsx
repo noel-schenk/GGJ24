@@ -6,7 +6,6 @@ import useGlobalState from './GlobalState'
 import { View } from './types'
 import { useEffect } from 'react'
 import config from './config';
-import { interact } from './Interact'
 import Sound from './components/Sound/Sound'
 
 function App() {
