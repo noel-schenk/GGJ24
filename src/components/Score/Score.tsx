@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { ScoreWrapper } from "./Score.styled";
 import useGlobalState from "../../GlobalState";
 import confetti from 'canvas-confetti';
+import Laugh from '../../assets/laugh.mp3';
 
 interface ScoreProps {}
 
@@ -12,7 +13,9 @@ const Score: FC<ScoreProps> = () => {
    state.subscribe('score', () => {
       console.log(state.score, 'state.score');
       confetti();
-      debugger;
+      const player = new Audio(Laugh);
+      player.volume = 0.1;
+      player.play();
    });
   }, [state.score]);
 
