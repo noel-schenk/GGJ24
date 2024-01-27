@@ -53,6 +53,12 @@ const Chat: FC<ChatProps> = () => {
          useGlobalState.set('altMode', 'hate')
          reloadConfigSystemMessage();
       }
+
+      if(event.target.value === 'laugh') {
+         document.querySelector('body')!.style.filter = 'saturate(2)';
+         useGlobalState.set('altMode', 'laugh')
+         reloadConfigSystemMessage();
+      }
    }
 
    const onBlur = () => {

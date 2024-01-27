@@ -58,7 +58,12 @@ const isInteractionFinal = (message: string): boolean => {
 };
 
 const isLaughing = (message: string) => {
-  if (message.includes("[LAUGH]")) return true;
+  if (
+    message.includes("[LAUGH]") ||
+    message.toLowerCase().includes("haha") ||
+    message.toLowerCase().includes("hihi")
+  )
+    return true;
   return false;
 };
 
