@@ -18,7 +18,8 @@ export interface Character {
   tiles: {
     happy: [number, number],
     angry: [number, number],
-  }
+  },
+  voice: string,
 }
 
 export interface CharacterResponse {

@@ -1,10 +1,10 @@
 import config from "./config";
 
-export const playTTS = (message: string) => {
+export const playTTS = (message: string, voice = 'alloy') => {
   const baseUrl = "https://ggj24.idhren.com/generate-mp3";
   const url = new URL(baseUrl);
 
-  url.searchParams.append("voice", "alloy");
+  url.searchParams.append("voice", voice);
   url.searchParams.append("key", config.gptKey);
   url.searchParams.append("message", message);
 

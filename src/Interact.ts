@@ -24,7 +24,7 @@ useGlobalState.subscribe("newCharacterResponse", () => {
     useGlobalState.get("activeCharacter").response
   );
 
-  playTTS(useGlobalState.get("activeCharacter").response.text);
+  playTTS(useGlobalState.get("activeCharacter").response.text, useGlobalState.get('activeCharacter').voice);
 
   resolve(useGlobalState.get("activeCharacter").response);
   resolve = undefined;

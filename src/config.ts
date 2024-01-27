@@ -30,7 +30,8 @@ export const config = {
       tiles: {
         happy: [-1, -3],
         angry: [-5, -3],
-      }
+      },
+      voice: 'onyx',
     },
     {
       response: {
@@ -50,7 +51,8 @@ export const config = {
       tiles: {
         happy: [-2, -5],
         angry: [-6, -5],
-      }
+      },
+      voice: 'nova',
     },
     {
       response: {
@@ -70,7 +72,8 @@ export const config = {
       tiles: {
         happy: [-3, -1],
         angry: [-7, -1],
-      }
+      },
+      voice: 'onyx',
     },
   ] as Character[],
 };
