@@ -43,6 +43,11 @@ const Chat: FC<ChatProps> = () => {
       }
 
 
+      if (event.target.value === 'normal') {
+         document.querySelector('body')!.classList.remove('fun');
+         document.querySelector('body')!.style.filter = '';
+         reloadConfigSystemMessage();
+      }
       if (event.target.value === 'zombie') {
          document.querySelector('body')!.classList.remove('fun');
          document.querySelector('body')!.style.filter = 'hue-rotate(180deg)';
