@@ -11,7 +11,6 @@ export const interact = async (
     "activeCharacter",
     useGlobalState.get("characters").indexOf(character)
   );
-  console.log(character);
   return new Promise<CharacterResponse>((r) => {
     useGlobalState.set("show", [View.MAIN, View.CHAT]);
     resolve = r;
@@ -22,7 +21,6 @@ useGlobalState.subscribe("activeCharacter--response", () => {
   if (!resolve) {
     return;
   }
-  console.log("new activeCharacter response", getActiveCharacter().response);
 
   playTTS(getActiveCharacter().response.text, getActiveCharacter().voice);
 

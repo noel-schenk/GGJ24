@@ -17,10 +17,6 @@ export const sendMessage = async (message: string) => {
 
   const res = await api.sendMessage(message);
 
-  console.log(res, "res");
-
-  console.log(isLaughing(res.text), "isLaughing(message)");
-
   isLaughing(res.text) &&
     useGlobalState.set("score", useGlobalState.get("score") + 1);
 
@@ -33,6 +29,11 @@ export const sendMessage = async (message: string) => {
     laugh: isLaughing(res.text),
   };
 
+  console.table([newState, useGlobalState.get("activeCharacter").response])
+  useGlobalState.get("activeCharacter").lastMessage = res.text;
+  useGlobalState.get("activeCharacter").interactionCount++;
+  useGlobalState.get("activeCharacter").response = newState;
+
   useGlobalState.set(
     "activeCharacter--response",
     useGlobalState.get("activeCharacter--response") + 1
@@ -42,7 +43,7 @@ export const sendMessage = async (message: string) => {
 const generateSystemMessage = (character: Character) => {
   return (
     config.basisSystemMessage +
-    `Du hast zuletzt gesagt: ${character.lastMessage} Du hast bereits ${character.interactionCount} mal mit dem Spieler gesprochen. Du hast aktuell EMOTION:${character.response.emotion}, passe das an, wenn du glücklicher oder trauriger wirst. Du bist: ${character.systemMessage}`
+    `Du hast zuletzt gesagt: ${character.lastMessage} | Du hast bereits ${character.interactionCount} mal mit dem Spieler gesprochen. | Du hast aktuell EMOTION:${character.response.emotion}, passe das an, wenn du glücklicher oder trauriger wirst. | WICHTIG: Du bist: ${character.systemMessage}`
   );
 };
 
@@ -65,11 +66,7 @@ const isLaughing = (message: string) => {
 
 const getEmotion = (message: string): number => {
   if (!message.includes("[EMOTION:")) return getLastEmotion();
-
   const emotion = [...message.matchAll(/\[EMOTION:(.*)?]/g)]?.[0]?.[1];
-
-  console.log("getEmotion", message.matchAll(/\[EMOTION:(.*)?]/g), emotion);
-
   return parseInt(emotion);
 };
 
