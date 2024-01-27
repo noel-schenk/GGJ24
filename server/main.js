@@ -4,7 +4,7 @@ import path from "path";
 import OpenAI from "openai";
 
 const app = express();
-const port = 3000; // Set your desired port number
+const port = 4444; // Set your desired port number
 
 app.get("/generate-mp3", async (req, res) => {
   try {
