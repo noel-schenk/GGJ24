@@ -3,7 +3,6 @@ import { Character, View } from "./types";
 
 const GlobalState = {
   example: "" as string,
-  interact: false,
   activeCharacter: {} as Character,
   gptKey: "" as string,
   show: [] as View[],

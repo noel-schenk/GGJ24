@@ -7,10 +7,10 @@ let resolve: any;
 export const interact = async (
   character: Character
 ): Promise<CharacterResponse> => {
+  useGlobalState.set("activeCharacter", character);
+  console.log(character);
   return new Promise<CharacterResponse>((r) => {
     useGlobalState.set("show", [View.MAIN, View.CHAT]);
-    useGlobalState.set("interact", true);
-    useGlobalState.set("activeCharacter", character);
     resolve = r;
   });
 };
