@@ -12,13 +12,17 @@ const Score: FC<ScoreProps> = () => {
   useEffect(() => {
     state.subscribe('score', () => {
       confetti();
-      const player = new Audio(Laugh);
-      player.volume = 0.1;
-      player.play();
+      doLaugh();
     });
   }, [state.score]);
 
   return <ScoreWrapper>Score: {state.score}</ScoreWrapper>;
 };
+
+export function doLaugh() {
+  const player = new Audio(Laugh);
+  player.volume = 0.1;
+  player.play();
+}
 
 export default Score;

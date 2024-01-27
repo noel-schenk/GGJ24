@@ -5,6 +5,7 @@ import { Direction, View } from "../types";
 import { CollisionType } from "./map";
 import { interact } from "../Interact";
 import useGlobalState from "../GlobalState";
+import { doLaugh } from "../components/Score/Score";
 
 const tmp = vec2.create();
 let pressed: Set<string> = new Set();
@@ -103,14 +104,21 @@ export function handleInteraction() {
     if (map.characters.has(`${tmp[0]}:${tmp[1]}`)) {
       // we have interaction
       const character = map.characters.get(`${tmp[0]}:${tmp[1]}`);
-      if (character && character.active) {
+      if (character && (character.active || character.response.laugh)) {
         const { tile } = character;
-        interact(character).then(({ emotion, final, text }) => {
+
+        if (character.response.laugh) {
+          tile.message = 'Hahahaha!';
+          useMapState.set("dt", Date.now());
+          doLaugh();
+          return;
+        }
+
+        interact(character).then(({ emotion, final, text, laugh }) => {
           tile.message = text;
           useMapState.set("dt", Date.now());
 
           const checkFinish = () => {
-            debugger;
             if (
               !useGlobalState
                 .get("characters")
@@ -120,14 +128,20 @@ export function handleInteraction() {
             }
           };
 
-          if (emotion < 2) {
+          if (laugh) {
+            character.active = false;
+            vec2.copy(tile.offset, character.tiles.laugh);
+            checkFinish();
+            return;
+          }
+
+          if (emotion < 1) {
             character.active = false;
             vec2.copy(tile.offset, character.tiles.angry);
             checkFinish();
             return;
           }
-          if (emotion > 6) {
-            tile.offset[1] += 1;
+          if (emotion > 10) {
             character.active = false;
             vec2.copy(tile.offset, character.tiles.happy);
             checkFinish();

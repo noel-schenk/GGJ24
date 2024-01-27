@@ -8,10 +8,10 @@ b                 b     b
 b  7   s    0     bbb   b
 b                       b
 b    /\\                 b
-b   /||\\                b
-b   |==|                b
-b   |=#|3         5     b
-b                       b
+b   /||\\        /\\      b
+b   |==|       /||\\     b
+b   |=#|3      |==|     b
+b              |=#|5    b
 mm                      b
 mmm                     b
 m mmm                   b

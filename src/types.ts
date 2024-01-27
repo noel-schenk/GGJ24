@@ -19,6 +19,7 @@ export interface Character {
     start: [number, number];
     happy: [number, number];
     angry: [number, number];
+    laugh: [number, number];
   };
   voice: string;
   pitch: number;

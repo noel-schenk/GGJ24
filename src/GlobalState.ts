@@ -6,6 +6,7 @@ const GlobalState = {
   activeCharacter: 0 as number,
   characters: [] as Array<Character>,
   gptKey: "" as string,
+  gptModel: "" as string,
   show: [] as View[],
   "activeCharacter--response": 0 as number,
   score: 0 as number,

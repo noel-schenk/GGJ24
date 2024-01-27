@@ -11,7 +11,7 @@ export const sendMessage = async (message: string) => {
     systemMessage: generateSystemMessage(getActiveCharacter()),
     fetch: self.fetch.bind(self),
     completionParams: {
-      model: "gpt-3.5-turbo",
+      model: useGlobalState.get('gptModel'),
     },
   });
 
@@ -20,19 +20,17 @@ export const sendMessage = async (message: string) => {
   isLaughing(res.text) &&
     useGlobalState.set("score", useGlobalState.get("score") + 1);
 
-  getActiveCharacter().lastMessage = res.text;
-  getActiveCharacter().interactionCount++;
-  getActiveCharacter().response = {
+  const newState = {
     text: getText(res.text),
     emotion: getEmotion(res.text),
     final: isInteractionFinal(res.text),
     laugh: isLaughing(res.text),
   };
+  console.table([newState, getActiveCharacter().response])
 
-  console.table([newState, useGlobalState.get("activeCharacter").response])
-  useGlobalState.get("activeCharacter").lastMessage = res.text;
-  useGlobalState.get("activeCharacter").interactionCount++;
-  useGlobalState.get("activeCharacter").response = newState;
+  getActiveCharacter().lastMessage = res.text;
+  getActiveCharacter().interactionCount++;
+  getActiveCharacter().response = newState
 
   useGlobalState.set(
     "activeCharacter--response",
@@ -65,8 +63,13 @@ const isLaughing = (message: string) => {
 };
 
 const getEmotion = (message: string): number => {
-  if (!message.includes("[EMOTION:")) return getLastEmotion();
-  const emotion = [...message.matchAll(/\[EMOTION:(.*)?]/g)]?.[0]?.[1];
+  let emotion = [...message.matchAll(/\[EMOTION:(.*)?]/g)]?.[0]?.[1];
+  if (emotion === undefined) {
+    emotion = [...message.matchAll(/\EMOTION:(.*)?]/g)]?.[0]?.[1];
+  }
+  if (emotion === undefined) {
+    return getLastEmotion();
+  }
   return parseInt(emotion);
 };
 

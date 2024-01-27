@@ -29,12 +29,24 @@ export const MenuWrapper = styled.div`
   }
 
   .Menu__Input {
-    width: 100%;
     height: 50px;
     font-size: 14px;
     border-radius: 14px;
     border: none;
     padding: 4px 14px;
     outline: none;
+    flex-basis: auto;
+    flex-grow: 1;
+  }
+
+  .Menu__Input2 {
+    width: 20%;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 14px;
+    border: none;
+    padding: 4px 14px;
+    outline: none;
+    flex-basis: 160px;
   }
 `;

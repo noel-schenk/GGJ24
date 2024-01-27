@@ -4,7 +4,7 @@ import { Character, View } from "./types";
 export const config = {
   initialView: View.MENU,
   gptKey: env.GPT_KEY,
-  gtpModel: 'gpt-3.5-turbo',
+  gptModel: 'gpt-3.5-turbo',
   basisSystemMessage: `Du bist eine Spielfigur, wie sie unten beschrieben ist.
     Du wirst nur mit dem antworten, was dieser Charakter antworten würde.
     Die einzige Ausnahme ist, wenn das Gespräch beendet werden soll, weil ein normaler Charakter das Gespräch an dieser Stelle beenden würde. In diesem Fall füge irgendwo in der Antwort ein [END] ein.
@@ -14,6 +14,61 @@ export const config = {
   `,
   movementSpeed: 0.2,
   characters: [
+    //*
+    {
+      response: {
+        emotion: 5,
+        final: false,
+        text: "Eh",
+      },
+      demoResponse: {
+        emotion: 0,
+        final: false,
+        text: "Eh",
+      },
+      interactionCount: 0,
+      name: "Hans",
+      systemMessage:
+        "Du lachst über absolut alles! ALLES!",
+      lastMessage: "",
+      tiles: {
+        start: [-1, -4],
+        happy: [-1, -3],
+        angry: [-5, -3],
+        laugh: [-5, -4],
+      },
+      voice: "Google UK English Male",
+      rate: 1,
+      pitch: 1,
+    },
+    {
+      response: {
+        emotion: 5,
+        final: false,
+        text: "Eh",
+      },
+      demoResponse: {
+        emotion: 0,
+        final: false,
+        text: "Eh",
+      },
+      interactionCount: 0,
+      name: "Claudia",
+      systemMessage:
+        "Du lachst über absolut alles! ALLES!",
+      lastMessage: "",
+      tiles: {
+        start: [-2, -6],
+        happy: [-2, -5],
+        angry: [-6, -5],
+        laugh: [-6, -6],
+      },
+      voice: "Microsoft Hedda - German (Germany)",
+      rate: 1,
+      pitch: 1.2,
+    },
+    //*/
+    /*
     {
       response: {
         emotion: 5,
@@ -34,6 +89,7 @@ export const config = {
         start: [-1, -4],
         happy: [-1, -3],
         angry: [-5, -3],
+        laugh: [-5, -4],
       },
       voice: "Google UK English Male",
       rate: 1,
@@ -59,6 +115,7 @@ export const config = {
         start: [-2, -6],
         happy: [-2, -5],
         angry: [-6, -5],
+        laugh: [-6, -6],
       },
       voice: "Microsoft Hedda - German (Germany)",
       rate: 1,
@@ -84,6 +141,7 @@ export const config = {
         start: [-3, -2],
         happy: [-3, -1],
         angry: [-7, -1],
+        laugh: [-7, -2],
       },
       voice: "Google Nederlands",
       rate: 1,
@@ -109,6 +167,7 @@ export const config = {
         start: [-3, -2],
         happy: [-3, -1],
         angry: [-7, -1],
+        laugh: [-7, -2],
       },
       voice: "Google Nederlands",
       rate: 2,
@@ -134,6 +193,7 @@ export const config = {
         start: [-3, -2],
         happy: [-3, -1],
         angry: [-7, -1],
+        laugh: [-7, -2],
       },
       voice: "Google Nederlands",
       rate: 2,
@@ -159,6 +219,7 @@ export const config = {
         start: [-3, -2],
         happy: [-3, -1],
         angry: [-7, -1],
+        laugh: [-7, -2],
       },
       voice: "Google Nederlands",
       rate: 1,
@@ -183,12 +244,12 @@ export const config = {
         start: [-3, -2],
         happy: [-3, -1],
         angry: [-7, -1],
+        laugh: [-7, -2],
       },
       voice: "Google Nederlands",
       rate: 1,
       pitch: 0.7,
     },
-    ,
     {
       response: {
         emotion: 5,
@@ -202,12 +263,13 @@ export const config = {
       },
       interactionCount: 0,
       name: "UWU",
-      systemMessage: "Du redest nur in UWU voice. Refferenziere in jeder Antwort mindestens zwei animes oder manga.",
+      systemMessage: "Du redest nur in UWU voice. WICHTIG: Refferenziere in jeder Antwort mindestens zwei animes oder manga.",
       lastMessage: "",
       tiles: {
-        start: [-3, -2],
-        happy: [-3, -1],
-        angry: [-7, -1],
+        start: [-3, -8],
+        happy: [-3, -7],
+        angry: [-7, -7],
+        laugh: [-7, -8],
       },
       voice: "Google Nederlands",
       rate: 1,
@@ -237,7 +299,10 @@ export const config = {
       rate: 1,
       pitch: 0.6,
     },
+    //*/
   ] as Character[],
 };
 
 export default config;
+
+console.log(config.characters.length)
