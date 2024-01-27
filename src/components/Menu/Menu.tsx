@@ -18,7 +18,7 @@ const Menu: FC<MenuProps> = () => {
             bringt Lachen und Freude rein.</p>
          <h2>Enter Your GPT Key</h2>
          <div className='Menu__Keycontainer'>
-            <input className='Menu__Input' type='text' value={state.gptKey} placeholder='Input your ChatGPT Key' onChange={e => state.set('gptKey', e.target.value)} />
+            <input className='Menu__Input' type='password' value={state.gptKey} placeholder='Input your ChatGPT Key' onChange={e => state.set('gptKey', e.target.value)} />
             <select className='Menu__Input2' value={state.gptModel} onChange={e => state.set('gptModel', e.target.value)}>
                <option value="gpt-3.5-turbo">GPT 3.5 Turbo</option>
                <option value="gpt-4">GPT 4</option>
