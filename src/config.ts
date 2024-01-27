@@ -2,10 +2,21 @@ import useGlobalState from "./GlobalState";
 import { CharactersProd } from "./config.characters.prod";
 import { CharactersTesting } from "./config.characters.test";
 import { CharactersZombie } from "./config.zombie.prod";
+import { CharactersHate } from "./config.hate.prod";
 import env from "./env";
 import { View } from "./types";
 
 const testing = false;
+
+const altMode = () => {
+  switch (useGlobalState.get("altMode")) {
+    case "zombie":
+      return CharactersZombie;
+    case "hate":
+      return CharactersHate;
+  }
+  return CharactersZombie;
+};
 
 export const config = () => {
   return {
@@ -21,8 +32,8 @@ export const config = () => {
   `,
 
     movementSpeed: 0.2,
-    characters: useGlobalState.get("zombieMode")
-      ? CharactersZombie
+    characters: useGlobalState.get("altMode")
+      ? altMode()
       : testing
         ? CharactersTesting
         : CharactersProd,

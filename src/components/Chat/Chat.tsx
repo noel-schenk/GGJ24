@@ -44,10 +44,14 @@ const Chat: FC<ChatProps> = () => {
 
       if(event.target.value === 'zombie') {
          document.querySelector('body')!.style.filter = 'hue-rotate(180deg)';
-         useGlobalState.set('zombieMode', true)
-         useGlobalState.get('characters').forEach((character, index) => {
-            character.systemMessage = config().characters[index].systemMessage
-         })
+         useGlobalState.set('altMode', 'zombie')
+         reloadConfigSystemMessage();
+      }
+
+      if(event.target.value === 'hate') {
+         document.querySelector('body')!.style.filter = 'invert(1)';
+         useGlobalState.set('altMode', 'hate')
+         reloadConfigSystemMessage();
       }
    }
 
@@ -65,3 +69,9 @@ const Chat: FC<ChatProps> = () => {
 };
 
 export default Chat;
+
+export const reloadConfigSystemMessage = () => {
+   useGlobalState.get('characters').forEach((character, index) => {
+      character.systemMessage = config().characters[index].systemMessage
+   })
+}
