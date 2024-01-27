@@ -31,6 +31,13 @@ const Map: FC<MapProps> = () => {
    }, [state.dt]);
 
    return <MapWrapper ref={mapRef as any}>
+      <Player className={clsx({
+         up: state.player.direction === Direction.up,
+         down: state.player.direction === Direction.down,
+         left: state.player.direction === Direction.left,
+         right: state.player.direction === Direction.right,
+      })}
+      ></Player>
       <RootScene
          className={clsx({
             move: state.player.moveDirection !== undefined,
@@ -49,13 +56,6 @@ const Map: FC<MapProps> = () => {
             }
          })}
       </RootScene>
-      <Player className={clsx({
-         up: state.player.direction === Direction.up,
-         down: state.player.direction === Direction.down,
-         left: state.player.direction === Direction.left,
-         right: state.player.direction === Direction.right,
-      })}
-      ></Player>
    </MapWrapper>
 };
 

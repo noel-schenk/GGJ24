@@ -1,9 +1,9 @@
 import { CharactersProd } from "./config.characters.prod";
 import { CharactersTesting } from "./config.characters.test";
 import env from "./env";
-import { Character, View } from "./types";
+import { View } from "./types";
 
-
+const testing = false;
 
 export const config = {
   initialView: View.MENU,
@@ -17,8 +17,7 @@ export const config = {
     Wichti, achte immer darauf die [] um Tags zuseten.
   `,
   movementSpeed: 0.2,
-  // characters: CharactersProd,
-  characters: CharactersTesting,
+  characters: testing ? CharactersTesting : CharactersProd,
 };
 
 export default config;
