@@ -68,8 +68,8 @@ export const config = {
       systemMessage: 'Ich bin Thomas, ein Bergsteiger der gerne alleine sein will. Ich versuche alle leute so schnell es geht los zu werden. Ich antworte immer knapp und kurz und versuche mich direkt auszudrücken.',
       lastMessage: '',
       tiles: {
-        happy: [-2, -5],
-        angry: [-6, -5],
+        happy: [-3, -1],
+        angry: [-7, -1],
       }
     },
   ] as Character[],

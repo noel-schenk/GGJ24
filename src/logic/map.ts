@@ -23,7 +23,7 @@ const tileOffsets = {
     '/': vec2.fromValues(-5, 0),
     '\\': vec2.fromValues(-6, 0),
     '=': vec2.fromValues(-7, 0),
-    '#': vec2.fromValues(-8, 0),
+    '#': vec2.fromValues(-9, 0),
 }
 const tileCollision = {
     '#': CollisionType.OVERLAP,

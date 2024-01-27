@@ -9,8 +9,8 @@ b      s    0     bbb   b
 b                       b
 b    /\\                 b
 b   /||\\                b
-b   |=||                b
-b   ||#|                b
+b   |==|                b
+b   |=#|                b
 b                       b
 mm                       b
 mmm                     b
