@@ -4,6 +4,7 @@ import { Character, View } from "./types";
 export const config = {
   initialView: View.MENU,
   gptKey: env.GPT_KEY,
+  gtpModel: 'gpt-3.5-turbo',
   basisSystemMessage: `Du bist eine Spielfigur, wie sie unten beschrieben ist.
     Du wirst nur mit dem antworten, was dieser Charakter antworten würde.
     Die einzige Ausnahme ist, wenn das Gespräch beendet werden soll, weil ein normaler Charakter das Gespräch an dieser Stelle beenden würde. In diesem Fall füge irgendwo in der Antwort ein [END] ein.
