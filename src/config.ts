@@ -3,7 +3,7 @@ import { CharactersTesting } from "./config.characters.test";
 import env from "./env";
 import { View } from "./types";
 
-const testing = true;
+const testing = false;
 
 export const config = {
   initialView: View.MENU,
