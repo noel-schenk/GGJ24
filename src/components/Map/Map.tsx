@@ -3,7 +3,7 @@ import { MapWrapper, RootScene, Player } from './Map.styled';
 import Tile from '../Tile/Tile';
 import useMapState from '../../states/MapState';
 import { keyDownHandler, keyUpHandler, resetInput, tick } from '../../logic/controlls';
-import { generateMap } from '../../logic/map';
+import { generateMap, mapTick } from '../../logic/map';
 import { Direction } from '../../types';
 import clsx from 'clsx';
 
@@ -21,12 +21,14 @@ const Map: FC<MapProps> = () => {
       document.addEventListener('keydown', keyDownHandler);
       document.addEventListener('keyup', keyUpHandler);
       document.addEventListener('blur', resetInput);
-      const interval = setInterval(tick, 1000 / 60);
+      const intervalControllTick = setInterval(tick, 1000 / 60);
+      const intervalMapTick = setInterval(mapTick, 1000);
       return () => {
          document.removeEventListener('keydown', keyDownHandler);
          document.removeEventListener('keyup', keyUpHandler);
          document.removeEventListener('blur', resetInput);
-         clearTimeout(interval);
+         clearTimeout(intervalControllTick);
+         clearTimeout(intervalMapTick);
       }
    }, [state.dt]);
 

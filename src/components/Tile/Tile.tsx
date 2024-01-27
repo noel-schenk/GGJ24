@@ -41,13 +41,24 @@ const Tile: FC<TileProps> = ({ tile }) => {
       left: `${tile.position[0]}em`,
       top: `${tile.position[1]}em`,
       backgroundImage: tile.image && `url(${tile.image})`,
-      backgroundPositionX: `${tile.offset?.[0]}em`,
+      backgroundPositionX: `${getTileO(tile, 0)}em`,
       backgroundPositionY: `${tile.offset?.[1]}em`,
    }}
       onClick={() => { console.log(tile.position.toString()) }}>
       {tile.message && <MessageWrapper ref={messageBox as any}>{tile.message}</MessageWrapper>}
    </TileWrapper>
 };
+
+function getTileO(tile: Tiles, offset: number) {
+   if (tile.offsetDyn) {
+      const base = tile.offset?.[offset] - (tile.offset?.[offset] % 4);
+      const baseOffset = ((tile.offset?.[offset] - tile.offsetDyn?.[offset]) % 4);
+
+      return base + baseOffset;
+   } else {
+      return tile.offset?.[offset];
+   }
+}
 
 export default Tile;
 
@@ -59,6 +70,7 @@ export function createTile(image: string, offset: vec2, position: vec2) {
       image,
       offset,
       position,
+      offsetDyn: vec2.create(),
    } as Tiles
 }
 export function createDummyTile() {

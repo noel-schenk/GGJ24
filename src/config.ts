@@ -3,7 +3,7 @@ import { CharactersTesting } from "./config.characters.test";
 import env from "./env";
 import { View } from "./types";
 
-const testing = false;
+const testing = true;
 
 export const config = {
   initialView: View.MENU,
@@ -16,8 +16,10 @@ export const config = {
     Würde der Charakter in dieses Situation lachen füge ein [LAUGH] Tag hinzu.
     Wichti, achte immer darauf die [] um Tags zuseten.
   `,
+
   movementSpeed: 0.2,
   characters: testing ? CharactersTesting : CharactersProd,
+  characterTurnChance: 0.5,
 };
 
 export default config;

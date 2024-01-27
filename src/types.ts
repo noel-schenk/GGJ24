@@ -5,7 +5,8 @@ export interface Tiles {
   position: vec2;
   image: string;
   offset: vec2;
-  message: string;
+  offsetDyn: vec2;
+  message?: string;
 }
 
 export interface Character {
@@ -20,6 +21,9 @@ export interface Character {
     happy: [number, number];
     angry: [number, number];
     laugh: [number, number];
+
+    tileOffset?: number;
+    turnable?: boolean;
   };
   voice: string;
   pitch: number;

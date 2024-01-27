@@ -71,6 +71,8 @@ export function generateMap(mapData = DemoMap) {
             const character = useGlobalState.get("characters")[parseInt(char)];
             character.active = true;
             character.tile = tile;
+            tile.offsetDyn = vec2.create();
+            character.tiles.tileOffset = 0;
             // spawn a NPC
             characters.set(`${x}:${y}`, character);
             // tile.message = 'Guten Tag. Es ist immer schön, jemanden zu sehen, auch wenn meine Stimmung nicht die beste ist.'
@@ -86,4 +88,20 @@ export function generateMap(mapData = DemoMap) {
   map.collisions = collisions;
   map.characters = characters;
   useMapState.set("map", map);
+}
+
+
+export function mapTick() {
+  const characters = useGlobalState.get("characters");
+  characters.forEach((character) => {
+    if (character.tiles.turnable) {
+      if (Math.random() < config.characterTurnChance) {
+        const offset = Math.floor((Math.random() * 4));
+        character.tiles.tileOffset = offset;
+        character.tile!.offsetDyn![0] = offset;
+        useMapState.set('dt', Date.now());
+        console.log(character.tile!.offsetDyn)
+      }
+    }
+  });
 }

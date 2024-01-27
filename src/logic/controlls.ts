@@ -104,9 +104,13 @@ export function handleInteraction() {
     if (map.characters.has(`${tmp[0]}:${tmp[1]}`)) {
       // we have interaction
       const character = map.characters.get(`${tmp[0]}:${tmp[1]}`);
-      if (character && (character.active || character.response.laugh)) {
+      if (character && (character.active || character.response?.laugh)) {
         const { tile } = character;
-        if (character.response.laugh) {
+        if (!tile) {
+          continue;
+        }
+
+        if (character.response?.laugh) {
           tile.message = 'Hahahaha!';
           useMapState.set("dt", Date.now());
           doLaugh();
@@ -123,20 +127,20 @@ export function handleInteraction() {
                 .get("characters")
                 .find((character) => character.active)
             ) {
-              useGlobalState.set("show", [View.END]);
+              useGlobalState.set("show", [View.END, View.MAIN]);
             }
           };
 
           if (laugh) {
             character.active = false;
-            vec2.copy(tile.offset, character.tiles.laugh);
+            vec2.copy(tile!.offset, character.tiles.laugh);
             checkFinish();
             return;
           }
 
           if (emotion < 1) {
             character.active = false;
-            vec2.copy(tile.offset, character.tiles.angry);
+            vec2.copy(tile!.offset, character.tiles.angry);
             checkFinish();
             return;
           }
