@@ -61,6 +61,7 @@ export function generateMap(mapData = DemoMap) {
                         tile: tile,
                         active: true,
                     });
+                    // tile.message = 'Guten Tag. Es ist immer schön, jemanden zu sehen, auch wenn meine Stimmung nicht die beste ist.'
                 }
             }
             x++;

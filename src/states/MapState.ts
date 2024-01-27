@@ -1,7 +1,6 @@
 import { StoreApi, UseBoundStore, create } from "zustand";
-import { Character, Direction, InteractionData, Player, Tiles } from "../types";
+import { Direction, InteractionData, Player, Tiles } from "../types";
 import { vec2 } from "gl-matrix";
-import { createDummyTile } from "../components/Tile/Tile";
 
 
 const MapState = {
@@ -11,9 +10,7 @@ const MapState = {
     collisions: new Map<string, number>(),
     interactions: new Map<string, InteractionData>(),
   },
-  tiles: [
-    createDummyTile(),
-  ] as Tiles[],
+  tiles: [] as Tiles[],
   player: {
     direction: Direction.down,
     moveDirection: undefined,

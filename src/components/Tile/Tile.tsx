@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
-import { TileWrapper } from './Tile.styled';
+import React, { FC, useEffect, useRef } from 'react';
+import { MessageWrapper, TileWrapper } from './Tile.styled';
 import { Direction, Tiles } from '../../types';
 import { vec2 } from 'gl-matrix';
+import useMapState from '../../states/MapState';
 
 interface TileProps {
    tile: Tiles;
@@ -9,8 +10,30 @@ interface TileProps {
    direction: Direction | undefined;
 }
 
-const Tile: FC<TileProps> = ({ tile }) => (
-   <TileWrapper style={{
+const Tile: FC<TileProps> = ({ tile }) => {
+   const messageBox = useRef<HTMLDivElement>();
+
+   useEffect(() => {
+      if (tile.message && messageBox.current) {
+         const interval = setInterval(() => {
+            messageBox.current?.scrollBy({
+               behavior: 'smooth',
+               top: 1,
+            })
+         }, 1000 / 30);
+         const timeout = setTimeout(() => {
+            tile.message = '';
+            useMapState.set('dt', Date.now());
+         }, 10000);
+         return () => {
+            clearTimeout(timeout);
+            clearInterval(interval);
+         }
+      }
+   }, [tile.message]);
+
+
+   return <TileWrapper style={{
       left: `${tile.position[0]}em`,
       top: `${tile.position[1]}em`,
       backgroundImage: tile.image && `url(${tile.image})`,
@@ -18,9 +41,9 @@ const Tile: FC<TileProps> = ({ tile }) => (
       backgroundPositionY: `${tile.offset?.[1]}em`,
    }}
       onClick={() => { console.log(tile.position.toString()) }}>
-      {tile.message && <></>}
+      {tile.message && <MessageWrapper ref={messageBox as any}>{tile.message}</MessageWrapper>}
    </TileWrapper>
-);
+};
 
 export default Tile;
 
