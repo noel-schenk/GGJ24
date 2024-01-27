@@ -47,8 +47,9 @@ export const playTTS = (message: string, voice = "alloy") => {
 
               // shifter.tempo = 1; // Set tempo
               // shifter.pitch = 1; // Set pitch
-              shifter.pitchSemitones =
-                useGlobalState().get("activeCharacter").tone;
+              if (useGlobalState.get("activeCharacter").tone)
+                shifter.pitchSemitones =
+                  useGlobalState.get("activeCharacter").tone;
 
               const play = () => {
                 shifter.connect(gainNode); // connect it to a GainNode to control the volume

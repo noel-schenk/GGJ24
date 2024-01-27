@@ -57,6 +57,7 @@ export const config = {
         angry: [-6, -5],
       },
       voice: "nova",
+      tone: 2,
     },
     {
       response: {
