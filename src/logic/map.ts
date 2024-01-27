@@ -99,6 +99,9 @@ export function mapTick() {
       if (Math.random() < config().characterTurnChance) {
         const offset = Math.floor(Math.random() * 4);
         character.tiles.tileOffset = offset;
+        if (!character.tile!.offsetDyn) {
+          character.tile!.offsetDyn = vec2.create();
+        }
         character.tile!.offsetDyn![0] = offset;
         useMapState.set("dt", Date.now());
         console.log(character.tile!.offsetDyn);

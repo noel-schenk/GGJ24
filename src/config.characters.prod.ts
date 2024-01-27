@@ -15,7 +15,7 @@ export const CharactersProd: Character[] = [
         interactionCount: 0,
         name: "Hans",
         systemMessage:
-            "Ich bin Hans und ich bin traurig. Ich habe gerade ein Bein verloren als mir Pandi vom Berg drauf gefallen ist und mir tut alles weh.",
+            "Ich bin Hans und ich bin traurig. Ich habe gerade ein Bein verloren als mir Pandi vom Berg drauf gefallen ist und mir tut alles weh. WICHTIG: JAMMER OFT ÜBER DEIN BEIN.",
         lastMessage: "",
         tiles: {
             start: [-1, -4],
@@ -25,7 +25,7 @@ export const CharactersProd: Character[] = [
             turnable: true,
         },
         voice: "Google UK English Male",
-        rate: 1,
+        rate: 1.3,
         pitch: 1,
     },
     {
@@ -42,7 +42,7 @@ export const CharactersProd: Character[] = [
         interactionCount: 0,
         name: "Claudia", // Kunde (Karen?) ist traurig weil er eine Lebensmittelvergiftung hat
         systemMessage:
-            "Ich bin Claudia und ich bin eine komplette Karen. Ich beschwere mich über alles was andere leute tun oder sagen. Ich mache gerne anderen das leben zur hölle und fahre ihnen über den mund. Ich lasse mich nicht rum schubsen, mir irgendwas sagen und bin sehr direkt. Heute bin ich besonders sauer weil ich beim Koch etwas gegessen habe und jetzt eine Lebensmittelvergiftung habe.",
+            "Ich bin Claudia und ich bin eine komplette Karen. Ich beschwere mich über alles was andere leute tun oder sagen. WICHTIG: ICH BIN SEHR UNFREUNDLICH! Ich mache gerne anderen das leben zur hölle und fahre ihnen über den mund. Ich lasse mich nicht rum schubsen, mir irgendwas sagen und bin sehr direkt. Heute bin ich besonders sauer weil ich beim Koch etwas gegessen habe und jetzt eine Lebensmittelvergiftung habe.",
         lastMessage: "",
         tiles: {
             start: [-2, -6],
@@ -52,8 +52,8 @@ export const CharactersProd: Character[] = [
             turnable: true,
         },
         voice: "Microsoft Hedda - German (Germany)",
-        rate: 1,
-        pitch: 1.2,
+        rate: 1.4,
+        pitch: 1.5,
     },
     {
         response: {
@@ -79,7 +79,7 @@ export const CharactersProd: Character[] = [
             laugh: [-7, -2],
             turnable: true,
         },
-        voice: "Google Nederlands",
+        voice: "Microsoft Stefan - German (Germany)",
         rate: 1,
         pitch: 1,
     },
@@ -106,9 +106,9 @@ export const CharactersProd: Character[] = [
             laugh: [-7, -2],
             turnable: true,
         },
-        voice: "Google Nederlands",
-        rate: 2,
-        pitch: 0.5,
+        voice: "Google Deutsch",
+        rate: 1.25,
+        pitch: 1.3,
     },
     {
         response: {
@@ -122,7 +122,7 @@ export const CharactersProd: Character[] = [
             text: "Eh",
         },
         interactionCount: 0,
-        name: "Penner",
+        name: "Koch",
         // Koch ist traurig weil sein essen den anderen nicht schmeckt
         systemMessage:
             "Du bist ein Koch. Du sprichts eine Mischung aus Bayrisch und Schwäbisch. Leider schmeckt den anderen dein Essen nicht. Dabei hast du es aus Pandafleisch hergestellt, was sehr selten ist. Weil ein Tierschützer irgendwo rumläuft darfst du aber niemandem sagen, dass es Panda fleisch war.",
@@ -134,9 +134,9 @@ export const CharactersProd: Character[] = [
             laugh: [-7, -2],
             turnable: true,
         },
-        voice: "Google Nederlands",
-        rate: 2,
-        pitch: 1.4,
+        voice: "Microsoft Stefan - German (Germany)",
+        rate: 0.8,
+        pitch: 0.6,
     },
     {
         response: {
@@ -161,7 +161,7 @@ export const CharactersProd: Character[] = [
             laugh: [-7, -2],
             turnable: true,
         },
-        voice: "Google Nederlands",
+        voice: "Microsoft Stefan - German (Germany)",
         rate: 1,
         pitch: 1.3,
     },
@@ -189,7 +189,7 @@ export const CharactersProd: Character[] = [
             laugh: [-7, -8],
             turnable: true,
         },
-        voice: "Google Nederlands",
+        voice: "Google UK English Male",
         rate: 1,
         pitch: 0.6,
     },
