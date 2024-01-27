@@ -15,16 +15,20 @@ const Tile: FC<TileProps> = ({ tile }) => {
 
    useEffect(() => {
       if (tile.message && messageBox.current) {
-         const interval = setInterval(() => {
-            messageBox.current?.scrollBy({
-               behavior: 'smooth',
-               top: 1,
-            })
-         }, 1000 / 30);
+         let interval: any = undefined;
+         setTimeout(() => {
+            interval = setInterval(() => {
+               messageBox.current?.scrollBy({
+                  behavior: 'smooth',
+                  top: 1,
+               })
+            }, 1000 / 30);
+         }, 3000);
+
          const timeout = setTimeout(() => {
             tile.message = '';
             useMapState.set('dt', Date.now());
-         }, 10000);
+         }, 20000);
          return () => {
             clearTimeout(timeout);
             clearInterval(interval);

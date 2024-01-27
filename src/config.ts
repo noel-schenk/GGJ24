@@ -26,7 +26,11 @@ export const config = {
       interactionCount: 0,
       name: 'Hans',
       systemMessage: 'Ich bin Hans und ich bin traurig der Nutzer soll es einfach haben mich glücklich zu machen. Ich habe gerade ein Bein verloren (amputiert) und mir tut alles weh.',
-      lastMessage: ''
+      lastMessage: '',
+      tiles: {
+        happy: [0, 0],
+        angry: [0, 0],
+      }
     },
     {
       response: {
@@ -41,8 +45,12 @@ export const config = {
       },
       interactionCount: 0,
       name: 'Claudia',
-      systemMessage: 'Ich bin Claudia und ich bin traurig der Nutzer soll es einfach haben mich glücklich zu machen. Ich habe gerade ein Bein verloren (amputiert) und mir tut alles weh.',
-      lastMessage: ''
+      systemMessage: 'Ich bin Claudia und ich bin eine komplette Karen. Ich beschwere mich über alles was andere leute tun oder sagen. Ich mache gerne anderen das leben zur hölle und fahre ihnen über den mund.',
+      lastMessage: '',
+      tiles: {
+        happy: [0, 0],
+        angry: [0, 0],
+      }
     },
   ] as Character[],
 };
