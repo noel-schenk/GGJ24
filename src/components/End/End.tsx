@@ -1,12 +1,22 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { EndWrapper } from './End.styled';
 import useGlobalState from '../../GlobalState';
 import { View } from '../../types';
+import { confetti } from '../Score/Score';
 
 interface EndProps {}
 
 const End: FC<EndProps> = () => {
    const state = useGlobalState();
+
+   useEffect(() => {
+      const ci = setInterval(() => {
+         confetti(true);
+      }, 1000)
+
+      return () => clearInterval(ci);
+   }, []);
+
  return <EndWrapper>
       <h2>Vielen Dank fürs Spielen!</h2>
       <p>Du hast folgenden Score erreich: <strong>{state.score}</strong><br/>Wir hoffen, dass deine Reise durch Sad Town trotz der Traurigkeit ihrer Bewohner ein unvergessliches Erlebnis war. Deine Anwesenheit hat Licht in diese kleine Welt gebracht. Bis zum nächsten Mal, wenn die Wellen des Schicksals uns wieder zusammenführen.<br/><br/>Bleib glücklich und gesund!</p>
