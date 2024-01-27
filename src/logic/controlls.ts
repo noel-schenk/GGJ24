@@ -128,6 +128,7 @@ export function handleInteraction() {
                 .find((character) => character.active)
             ) {
               useGlobalState.set("show", [View.END, View.MAIN]);
+              useGlobalState.set("stopWatch", false);
             }
           };
 

@@ -11,6 +11,8 @@ const GlobalState = {
   "activeCharacter--response": 0 as number,
   score: 0 as number,
   altMode: "" as string,
+  stopWatch: true as boolean,
+  stopWatchStartTime: 0 as number,
 };
 
 export const getActiveCharacter = () => {

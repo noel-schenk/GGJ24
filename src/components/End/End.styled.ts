@@ -9,7 +9,7 @@ export const EndWrapper = styled.div`
   background: white;
   padding: 10px 20px;
   height: 100%;
-  width: 400px;
+  width: 600px;
   border-radius: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +17,7 @@ export const EndWrapper = styled.div`
   align-content: center;
 
   p {
-    strong {
+    .End__Score {
       animation: happyColors 1s linear 0s infinite alternate;
       display: block;
       font-size: 80px;
