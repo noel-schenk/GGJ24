@@ -18,7 +18,7 @@ function App() {
     state.set('gptKey', config.gptKey)
     state.set('gptModel', config.gptModel)
 
-    useGlobalState.set('show', [View.MAIN, View.END])
+    // useGlobalState.set('show', [View.MAIN, View.END])
 
     useGlobalState.set('characters', config.characters);
     useGlobalState.set("activeCharacter", 0)
