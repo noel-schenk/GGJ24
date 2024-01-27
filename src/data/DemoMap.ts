@@ -10,9 +10,9 @@ b                       b
 b    /\\                 b
 b   /||\\                b
 b   |==|                b
-b   |=#|                b
+b   |=#|4               b
 b                       b
-mm                       b
+mm                      b
 mmm                     b
 m mmm                   b
 m   mmm                 b
