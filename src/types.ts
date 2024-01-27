@@ -15,6 +15,10 @@ export interface Character {
   interactionCount: number;
   demoResponse: CharacterResponse;
   response: CharacterResponse;
+  tiles: {
+    happy: [number, number],
+    angry: [number, number],
+  }
 }
 
 export interface CharacterResponse {

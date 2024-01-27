@@ -17,7 +17,7 @@ const tileOffsets = {
     g: vec2.fromValues(-2, 0),
     t: vec2.fromValues(-3, 0),
     0: vec2.fromValues(-1, -4),
-    1: vec2.fromValues(-1, -4),
+    1: vec2.fromValues(-2, -6),
 }
 const tileCollision = {
     b: CollisionType.BLOCK,

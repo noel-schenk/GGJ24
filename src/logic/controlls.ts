@@ -97,11 +97,12 @@ export function handleInteraction() {
                 const { character, tile } = data;
                 interact(character).then(({ emotion, final, text }) => {
                     tile.message = text;
+                    useMapState.set('dt', Date.now());
                     if (emotion < 2) {
                         data.active = false;
                         return;
                     }
-                    if (emotion > 9) {
+                    if (emotion > 6) {
                         tile.offset[1] += 1;
                         data.active = false;
                         return;
