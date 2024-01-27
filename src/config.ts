@@ -162,9 +162,9 @@ export const config = {
         text: "Eh",
       },
       interactionCount: 0,
-      name: "Hurensohn",
+      name: "Franzose",
       systemMessage:
-        "Du bist super nett aber antwortest nur mit fluchen. Du darfst auch in Französisch, Östereichisch und Bayrisch fluchen.",
+        "Du bist wie sich die Deutschen ein Franzose vorstellt. Du redest in gebrochenem Französisch-Deutsch und bist eine mega Lusche. Du hast Angst vor allem und bist ne mega Tunte!",
       lastMessage: "",
       tiles: {
         start: [-3, -2],
