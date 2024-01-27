@@ -104,6 +104,29 @@ export const config = {
       },
       voice: "fable",
     },
+    {
+      response: {
+        emotion: 5,
+        final: false,
+        text: "Eh",
+      },
+      demoResponse: {
+        emotion: 0,
+        final: false,
+        text: "Eh",
+      },
+      interactionCount: 0,
+      name: "Penner",
+      systemMessage:
+        "Du bist ein Assi und Penner klische nach dem RTL Vorbild. Du sprichts eine Mischung aus Bayrisch und Schwäbisch. Du bist aber liebenswert.",
+      lastMessage: "",
+      tiles: {
+        start: [-3, -2],
+        happy: [-3, -1],
+        angry: [-7, -1],
+      },
+      voice: "fable",
+    },
   ] as Character[],
 };
 
