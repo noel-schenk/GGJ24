@@ -46,7 +46,7 @@ const generateSystemMessage = (character: Character) => {
 };
 
 const getText = (message: string): string => {
-  return message.replaceAll(/\[.*?]/g, "").replaceAll(/\EMOTION:(\d*)?]/g, '');
+  return message.replaceAll(/\[.*?]/g, "").replaceAll(/\EMOTION:\d+?]/g, '');
 };
 
 const isInteractionFinal = (message: string): boolean => {
@@ -68,9 +68,9 @@ const isLaughing = (message: string) => {
 };
 
 const getEmotion = (message: string): number => {
-  let emotion = [...message.matchAll(/\[EMOTION:(.*)?]/g)]?.[0]?.[1];
+  let emotion = [...message.matchAll(/\[EMOTION:\d+?]/g)]?.[0]?.[1];
   if (emotion === undefined) {
-    emotion = [...message.matchAll(/\EMOTION:(\d*)?]/g)]?.[0]?.[1];
+    emotion = [...message.matchAll(/\EMOTION:\d+?]/g)]?.[0]?.[1];
   }
   if (emotion === undefined) {
     return getLastEmotion();

@@ -189,8 +189,8 @@ export const CharactersProd: Character[] = [
             laugh: [-7, -8],
             turnable: true,
         },
-        voice: "Google UK English Male",
+        voice: "Microsoft Stefan - German (Germany)",
         rate: 1,
-        pitch: 0.6,
+        pitch: 0.4,
     },
 ];

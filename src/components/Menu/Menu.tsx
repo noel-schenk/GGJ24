@@ -1,13 +1,18 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { MenuWrapper } from './Menu.styled';
 import useGlobalState from '../../GlobalState';
 import { View } from '../../types';
 import IntroPng from '../../assets/intro.png';
+import useMapState from '../../states/MapState';
 
 interface MenuProps { }
 
 const Menu: FC<MenuProps> = () => {
    const state = useGlobalState();
+
+   useEffect(() => {
+      useMapState.get('map').haveMap = false;
+   }, []);
 
    return <MenuWrapper>
       <div className='Menu__Interaction'>
