@@ -127,6 +127,29 @@ export const config = {
       },
       voice: "fable",
     },
+    {
+      response: {
+        emotion: 5,
+        final: false,
+        text: "Eh",
+      },
+      demoResponse: {
+        emotion: 0,
+        final: false,
+        text: "Eh",
+      },
+      interactionCount: 0,
+      name: "Schweizer",
+      systemMessage:
+        "Du bist Schweizer und schreibst schweizerdeutsch. Du kannst kein Hochdeutsch und verstehst die hälfte nicht. Erzähl immer von Fondue und Käse in deiner Antwort auch wenn es nicht zur Frage passt.",
+      lastMessage: "",
+      tiles: {
+        start: [-3, -2],
+        happy: [-3, -1],
+        angry: [-7, -1],
+      },
+      voice: "fable",
+    },
   ] as Character[],
 };
 
