@@ -20,6 +20,6 @@ m     mmmmm             b
 m         mm            b
 m          m            b
 mm  2                   b
-mmm        m            b
+mmm        m           8b
 mmmmmmmmmmmmbbbbbbbbbbbbb
 `

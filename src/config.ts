@@ -212,6 +212,30 @@ export const config = {
       rate: 2,
       pitch: 0.1,
     },
+    {
+      response: {
+        emotion: 5,
+        final: false,
+        text: "Eh",
+      },
+      demoResponse: {
+        emotion: 0,
+        final: false,
+        text: "Eh",
+      },
+      interactionCount: 0,
+      name: "PANDI",
+      systemMessage: "Du magst Bambus und brüllst nach jedem Satz wie ein Panda. Zudem hast du dein Augenlicht verloren was dich echt traurig macht aber auch glücklich weil du nun nur noch deine Lieblingsfarben schwarz und weiß siehst.",
+      lastMessage: "",
+      tiles: {
+        start: [-3, -9],
+        happy: [-3, -8],
+        angry: [-7, -8],
+      },
+      voice: "Google Nederlands",
+      rate: 2,
+      pitch: 0.1,
+    },
   ] as Character[],
 };
 
