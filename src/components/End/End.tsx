@@ -20,7 +20,7 @@ const End: FC<EndProps> = () => {
  return <EndWrapper>
       <h2>Vielen Dank fürs Spielen!</h2>
       <p>Du hast folgenden Score erreich: <strong>{state.score}</strong><br/>Wir hoffen, dass deine Reise durch Sad Town trotz der Traurigkeit ihrer Bewohner ein unvergessliches Erlebnis war. Deine Anwesenheit hat Licht in diese kleine Welt gebracht. Bis zum nächsten Mal, wenn die Wellen des Schicksals uns wieder zusammenführen.<br/><br/>Bleib glücklich und gesund!</p>
-      <div onClick={() => state.set('show', [View.MAIN])} className='End__Close'>x</div>
+      <div onClick={() => state.set('show', [View.MAIN])} className='End__Close'>Weiterspielen</div>
  </EndWrapper>
 };
 

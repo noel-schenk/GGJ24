@@ -4,14 +4,16 @@ import Tile from '../Tile/Tile';
 import useMapState from '../../states/MapState';
 import { keyDownHandler, keyUpHandler, resetInput, tick } from '../../logic/controlls';
 import { generateMap, mapTick } from '../../logic/map';
-import { Direction } from '../../types';
+import { Direction, View } from '../../types';
 import clsx from 'clsx';
+import useGlobalState from '../../GlobalState';
 
 interface MapProps { }
 
 const Map: FC<MapProps> = () => {
    const mapRef = useRef<HTMLDivElement>();
    const state = useMapState();
+   const gState = useGlobalState();
 
    useEffect(() => {
       if (!state.map.haveMap) {
@@ -32,7 +34,9 @@ const Map: FC<MapProps> = () => {
       }
    }, [state.dt]);
 
-   return <MapWrapper ref={mapRef as any}>
+   return <MapWrapper className={clsx({
+      'Map__ZoomOut': gState.show.includes(View.END)
+   })} ref={mapRef as any}>
       <MapBackground
          className={clsx({
             move: state.player.moveDirection !== undefined,
