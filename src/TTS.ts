@@ -11,8 +11,7 @@ export const playTTS = (message: string, voice = "Google Nederlands") => {
     utterance.pitch = getActiveCharacter().pitch ?? 1;
     utterance.rate = getActiveCharacter().rate ?? 1;
 
-    utterance.voice =
-      voices.find((ssvoice) => ssvoice.name === voice) ||
+    utterance.voice = voices.find((ssvoice) => ssvoice.name === voice) ||
       voices.find((ssvoice) => ssvoice.lang === "de-DE")!;
 
     speechSynthesis.cancel();

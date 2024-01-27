@@ -30,7 +30,7 @@ export const sendMessage = async (message: string) => {
 
   getActiveCharacter().lastMessage = res.text;
   getActiveCharacter().interactionCount++;
-  getActiveCharacter().response = newState
+  getActiveCharacter().response = newState;
 
   useGlobalState.set(
     "activeCharacter--response",
