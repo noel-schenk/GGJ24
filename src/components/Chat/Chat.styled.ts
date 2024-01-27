@@ -34,14 +34,29 @@ export const ChatWrapper = styled.div`
   }
 
   .Chat__Input {
+    border: none;
+    overflow: auto;
+    outline: none;
+    box-shadow: none;
+    resize: none;
+
     width: 100%;
     font-size: 30px;
     height: 30px;
-    border: none;
-    outline: none;
+
+    &.Chat__Input--edit {
+      height: 120px;
+      font-size: 14px;
+    }
   }
 
   .Chat__Button {
     background: none;
+  }
+
+  .Chat__Edit {
+    position: absolute;
+    bottom: 74px;
+    right: 0;
   }
 `;
