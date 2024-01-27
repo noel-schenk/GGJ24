@@ -29,6 +29,7 @@ export interface CharacterResponse {
   text: string;
   emotion: number;
   final: boolean;
+  laugh: boolean;
 }
 
 export enum View {

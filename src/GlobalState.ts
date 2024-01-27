@@ -7,7 +7,6 @@ const GlobalState = {
   gptKey: "" as string,
   show: [] as View[],
   "activeCharacter--response": 0 as number,
-  "score--new": 0 as number,
   score: 0 as number,
 };
 
@@ -28,7 +27,8 @@ const basicGlobalState = create<Store>((set, get, api) => ({
   set: createSetter(set),
   get: (key) => get()[key],
   subscribe: (key, callback) => {
-    const listener = (state: State) => {
+    const listener = (state: State, prevState: State) => {
+      if (state[key] === prevState[key]) return;
       callback(state[key]);
     };
     return api.subscribe(listener);

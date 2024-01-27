@@ -19,12 +19,18 @@ export const sendMessage = async (message: string) => {
 
   console.log(res, "res");
 
+  console.log(isLaughing(res.text), "isLaughing(message)");
+
+  isLaughing(res.text) &&
+    useGlobalState.set("score", useGlobalState.get("score") + 1);
+
   useGlobalState.get("activeCharacter").lastMessage = res.text;
   useGlobalState.get("activeCharacter").interactionCount++;
   useGlobalState.get("activeCharacter").response = {
     text: getText(res.text),
     emotion: getEmotion(res.text),
     final: isInteractionFinal(res.text),
+    laugh: isLaughing(res.text),
   };
 
   useGlobalState.set(
@@ -50,6 +56,11 @@ const isInteractionFinal = (message: string): boolean => {
   } else {
     return false;
   }
+};
+
+const isLaughing = (message: string) => {
+  if (message.includes("[LAUGH]")) return true;
+  return false;
 };
 
 const getEmotion = (message: string): number => {
