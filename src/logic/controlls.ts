@@ -106,7 +106,6 @@ export function handleInteraction() {
       const character = map.characters.get(`${tmp[0]}:${tmp[1]}`);
       if (character && (character.active || character.response.laugh)) {
         const { tile } = character;
-
         if (character.response.laugh) {
           tile.message = 'Hahahaha!';
           useMapState.set("dt", Date.now());
