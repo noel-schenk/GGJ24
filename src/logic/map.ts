@@ -46,7 +46,7 @@ export function generateMap(mapData = DemoMap) {
     .forEach((line) => {
       line.split("").forEach((char) => {
         const charakter = !Number.isNaN(parseInt(char))
-          ? config.characters[parseInt(char)]
+          ? config().characters[parseInt(char)]
           : undefined;
         if (char === "s") {
           const player = useMapState.get("player");
@@ -92,17 +92,16 @@ export function generateMap(mapData = DemoMap) {
   useMapState.set("map", map);
 }
 
-
 export function mapTick() {
   const characters = useGlobalState.get("characters");
   characters.forEach((character) => {
     if (character.tiles.turnable) {
-      if (Math.random() < config.characterTurnChance) {
-        const offset = Math.floor((Math.random() * 4));
+      if (Math.random() < config().characterTurnChance) {
+        const offset = Math.floor(Math.random() * 4);
         character.tiles.tileOffset = offset;
         character.tile!.offsetDyn![0] = offset;
-        useMapState.set('dt', Date.now());
-        console.log(character.tile!.offsetDyn)
+        useMapState.set("dt", Date.now());
+        console.log(character.tile!.offsetDyn);
       }
     }
   });

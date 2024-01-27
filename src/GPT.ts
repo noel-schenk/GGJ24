@@ -11,7 +11,7 @@ export const sendMessage = async (message: string) => {
     systemMessage: generateSystemMessage(getActiveCharacter()),
     fetch: self.fetch.bind(self),
     completionParams: {
-      model: useGlobalState.get('gptModel'),
+      model: useGlobalState.get("gptModel"),
     },
   });
 
@@ -26,7 +26,7 @@ export const sendMessage = async (message: string) => {
     final: isInteractionFinal(res.text),
     laugh: isLaughing(res.text),
   };
-  console.table([newState, getActiveCharacter().response])
+  console.table([newState, getActiveCharacter().response]);
 
   getActiveCharacter().lastMessage = res.text;
   getActiveCharacter().interactionCount++;
@@ -40,7 +40,7 @@ export const sendMessage = async (message: string) => {
 
 const generateSystemMessage = (character: Character) => {
   return (
-    config.basisSystemMessage +
+    config().basisSystemMessage +
     `Du hast zuletzt gesagt: ${character.lastMessage} | Du hast bereits ${character.interactionCount} mal mit dem Spieler gesprochen. | Du hast aktuell EMOTION:${character.response!.emotion}, passe das an, wenn du glücklicher oder trauriger wirst. | WICHTIG: Du bist: ${character.systemMessage}`
   );
 };

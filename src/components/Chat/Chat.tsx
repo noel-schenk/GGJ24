@@ -4,6 +4,7 @@ import { sendMessage } from '../../GPT';
 import useGlobalState, { getActiveCharacter } from '../../GlobalState';
 import { View } from '../../types';
 import clsx from 'clsx';
+import config from '../../config';
 
 interface ChatProps { }
 
@@ -39,6 +40,14 @@ const Chat: FC<ChatProps> = () => {
       if(event.target.value === 'edit') {
          setEditMode(true)
          setChatInput('')
+      }
+
+      if(event.target.value === 'zombie') {
+         document.querySelector('body')!.style.filter = 'hue-rotate(180deg)';
+         useGlobalState.set('zombieMode', true)
+         useGlobalState.get('characters').forEach((character, index) => {
+            character.systemMessage = config().characters[index].systemMessage
+         })
       }
    }
 

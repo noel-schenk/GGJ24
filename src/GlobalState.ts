@@ -10,6 +10,7 @@ const GlobalState = {
   show: [] as View[],
   "activeCharacter--response": 0 as number,
   score: 0 as number,
+  zombieMode: false as boolean,
 };
 
 export const getActiveCharacter = () => {

@@ -83,7 +83,7 @@ export function tick() {
           player.moveDirection = undefined;
           useMapState.set("player", player);
         });
-      }, config.movementSpeed * 1000);
+      }, config().movementSpeed * 1000);
     }
 
     useMapState.set("player", player);
@@ -111,7 +111,7 @@ export function handleInteraction() {
         }
 
         if (character.response?.laugh) {
-          tile.message = 'Hahahaha!';
+          tile.message = "Hahahaha!";
           useMapState.set("dt", Date.now());
           doLaugh();
           return;

@@ -31,7 +31,7 @@ export const MapBackground = styled.div`
   z-index: -1;
 
   &.move {
-    animation-duration: ${(config.movementSpeed * 1.01).toFixed(5)}s;
+    animation-duration: ${(config().movementSpeed * 1.01).toFixed(5)}s;
     animation-fill-mode: both;
     animation-timing-function: linear;
   }
@@ -91,7 +91,7 @@ export const RootScene = styled.div`
   transform: translateY(0);
 
   &.move {
-    animation-duration: ${(config.movementSpeed * 1.01).toFixed(5)}s;
+    animation-duration: ${(config().movementSpeed * 1.01).toFixed(5)}s;
     animation-fill-mode: both;
     animation-timing-function: linear;
   }
