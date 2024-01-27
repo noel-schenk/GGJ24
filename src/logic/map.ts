@@ -39,7 +39,7 @@ export function generateMap(mapData = DemoMap) {
 
     mapData.split('\n').filter(s => s.length > 0).forEach(line => {
         line.split('').forEach(char => {
-            const charakter = Number.isNaN(parseInt(char)) ? config.characters[parseInt(char)] : undefined;
+            const charakter = !Number.isNaN(parseInt(char)) ? config.characters[parseInt(char)] : undefined;
             if (char === 's') {
                 const player = useMapState.get('player');
                 player.position[0] = x;
