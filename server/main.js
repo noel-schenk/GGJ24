@@ -2,11 +2,14 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
+import cors from "cors";
 
 import { PythonShell } from "python-shell";
 
 const app = express();
 const port = 4444; // Set your desired port number
+
+app.use(cors());
 
 app.get("/generate-mp3", async (req, res) => {
   try {
@@ -63,7 +66,7 @@ from freeGPT import Client
 
 prompt = "Hi"
 try:
-    resp = Client.create_completion("gpt4", prompt)
+    resp = Client.create_completion("gpt3", prompt)
     print(resp)
 except Exception as e:
     print(e)

@@ -56,8 +56,9 @@ export const config = {
         happy: [-2, -5],
         angry: [-6, -5],
       },
-      voice: "nova",
-      tone: 2,
+      voice: "Google Nederlands",
+      rate: 1,
+      pitch: 2,
     },
     {
       response: {
@@ -80,7 +81,9 @@ export const config = {
         happy: [-3, -1],
         angry: [-7, -1],
       },
-      voice: "onyx",
+      voice: "Google Nederlands",
+      rate: 2,
+      pitch: 1,
     },
     {
       response: {
@@ -103,7 +106,9 @@ export const config = {
         happy: [-3, -1],
         angry: [-7, -1],
       },
-      voice: "fable",
+      voice: "Google Nederlands",
+      rate: 2,
+      pitch: 0.5,
     },
     {
       response: {
@@ -126,7 +131,9 @@ export const config = {
         happy: [-3, -1],
         angry: [-7, -1],
       },
-      voice: "fable",
+      voice: "Google Nederlands",
+      rate: 2,
+      pitch: 5,
     },
     {
       response: {
@@ -149,7 +156,9 @@ export const config = {
         happy: [-3, -1],
         angry: [-7, -1],
       },
-      voice: "fable",
+      voice: "Google Nederlands",
+      rate: 2,
+      pitch: 6,
     },
     {
       response: {
@@ -171,7 +180,9 @@ export const config = {
         happy: [-3, -1],
         angry: [-7, -1],
       },
-      voice: "echo",
+      voice: "Google Nederlands",
+      rate: 2,
+      pitch: 0.1,
     },
   ] as Character[],
 };

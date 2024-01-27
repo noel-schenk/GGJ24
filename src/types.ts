@@ -21,7 +21,8 @@ export interface Character {
     angry: [number, number];
   };
   voice: string;
-  tone: number;
+  pitch: number;
+  rate: number;
 }
 
 export interface CharacterResponse {
@@ -50,7 +51,7 @@ export interface Player {
 }
 
 export interface InteractionData {
-  character: Character,
-  tile: Tiles,
-  active: boolean,
+  character: Character;
+  tile: Tiles;
+  active: boolean;
 }
