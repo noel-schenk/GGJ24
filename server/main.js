@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
 
+import { PythonShell } from "python-shell";
+
 const app = express();
 const port = 4444; // Set your desired port number
 
@@ -41,6 +43,36 @@ app.get("/generate-mp3", async (req, res) => {
 
       // Clean up the generated MP3 file after it has been sent
       fs.unlinkSync(speechFile);
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/ask", async (req, res) => {
+  try {
+    const message = req.query.message
+      .replace(")", "")
+      .replace('"', "")
+      .replace("'", "");
+
+    PythonShell.runString(
+      `
+from freeGPT import Client
+
+prompt = "Hi"
+try:
+    resp = Client.create_completion("gpt4", prompt)
+    print(resp)
+except Exception as e:
+    print(e)
+    
+    `,
+      null
+    ).then((messages) => {
+      res.send(messages[0]);
+      console.log("finished", messages[0]);
     });
   } catch (err) {
     console.error(err);
