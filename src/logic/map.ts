@@ -16,9 +16,6 @@ const tileOffsets = {
     m: vec2.fromValues(-1, 0),
     g: vec2.fromValues(-2, 0),
     t: vec2.fromValues(-3, 0),
-    0: vec2.fromValues(-1, -4),
-    1: vec2.fromValues(-2, -6),
-    2: vec2.fromValues(-3, -2),
     '|': vec2.fromValues(-4, 0),
     '/': vec2.fromValues(-5, 0),
     '\\': vec2.fromValues(-6, 0),
@@ -42,13 +39,14 @@ export function generateMap(mapData = DemoMap) {
 
     mapData.split('\n').filter(s => s.length > 0).forEach(line => {
         line.split('').forEach(char => {
+            const charakter = Number.isNaN(parseInt(char)) ? config.characters[parseInt(char)] : undefined;
             if (char === 's') {
                 const player = useMapState.get('player');
                 player.position[0] = x;
                 player.position[1] = y;
                 useMapState.set('player', player);
             }
-            const offset = tileOffsets[char as keyof typeof tileOffsets];
+            const offset = charakter?.tiles.start ?? tileOffsets[char as keyof typeof tileOffsets];
             const collision = tileCollision[char as keyof typeof tileCollision] ?? CollisionType.BLOCK;
             if (offset) {
                 const tile = createTile(offset && image, offset, vec2.fromValues(x, y));

@@ -16,6 +16,7 @@ export interface Character {
   demoResponse: CharacterResponse;
   response: CharacterResponse;
   tiles: {
+    start: [number, number],
     happy: [number, number],
     angry: [number, number],
   },

@@ -28,6 +28,7 @@ export const config = {
       systemMessage: 'Ich bin Hans und ich bin traurig der Nutzer soll es einfach haben mich glücklich zu machen. Ich habe gerade ein Bein verloren (amputiert) und mir tut alles weh.',
       lastMessage: '',
       tiles: {
+        start: [-1, -4],
         happy: [-1, -3],
         angry: [-5, -3],
       },
@@ -49,6 +50,7 @@ export const config = {
       systemMessage: 'Ich bin Claudia und ich bin eine komplette Karen. Ich beschwere mich über alles was andere leute tun oder sagen. Ich mache gerne anderen das leben zur hölle und fahre ihnen über den mund.',
       lastMessage: '',
       tiles: {
+        start: [-2, -6],
         happy: [-2, -5],
         angry: [-6, -5],
       },
@@ -70,6 +72,7 @@ export const config = {
       systemMessage: 'Ich bin Thomas, ein Bergsteiger der gerne alleine sein will. Ich versuche alle leute so schnell es geht los zu werden. Ich antworte immer knapp und kurz und versuche mich direkt auszudrücken.',
       lastMessage: '',
       tiles: {
+        start: [-3, -2],
         happy: [-3, -1],
         angry: [-7, -1],
       },
