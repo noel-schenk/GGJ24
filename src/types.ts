@@ -38,6 +38,7 @@ export enum View {
   CHAT,
   MENU,
   MAIN,
+  END,
 }
 
 export enum Direction {

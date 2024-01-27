@@ -1,9 +1,10 @@
 import { vec2 } from "gl-matrix";
 import config from "../config";
 import useMapState from "../states/MapState";
-import { Direction } from "../types";
+import { Direction, View } from "../types";
 import { CollisionType } from "./map";
 import { interact } from "../Interact";
+import useGlobalState from "../GlobalState";
 
 const tmp = vec2.create();
 let pressed: Set<string> = new Set();
@@ -107,19 +108,34 @@ export function handleInteraction() {
         interact(character).then(({ emotion, final, text }) => {
           tile.message = text;
           useMapState.set("dt", Date.now());
+
+          const checkFinish = () => {
+            debugger;
+            if (
+              !useGlobalState
+                .get("characters")
+                .find((character) => character.active)
+            ) {
+              useGlobalState.set("show", [View.END]);
+            }
+          };
+
           if (emotion < 2) {
             character.active = false;
             vec2.copy(tile.offset, character.tiles.angry);
+            checkFinish();
             return;
           }
           if (emotion > 6) {
             tile.offset[1] += 1;
             character.active = false;
             vec2.copy(tile.offset, character.tiles.happy);
+            checkFinish();
             return;
           }
           if (final) {
             character.active = false;
+            checkFinish();
             return;
           }
           handleInteraction();
