@@ -41,7 +41,7 @@ export const sendMessage = async (message: string) => {
 const generateSystemMessage = (character: Character) => {
   return (
     config.basisSystemMessage +
-    `Du hast zuletzt gesagt: ${character.lastMessage} | Du hast bereits ${character.interactionCount} mal mit dem Spieler gesprochen. | Du hast aktuell EMOTION:${character.response.emotion}, passe das an, wenn du glücklicher oder trauriger wirst. | WICHTIG: Du bist: ${character.systemMessage}`
+    `Du hast zuletzt gesagt: ${character.lastMessage} | Du hast bereits ${character.interactionCount} mal mit dem Spieler gesprochen. | Du hast aktuell EMOTION:${character.response!.emotion}, passe das an, wenn du glücklicher oder trauriger wirst. | WICHTIG: Du bist: ${character.systemMessage}`
   );
 };
 
@@ -74,5 +74,5 @@ const getEmotion = (message: string): number => {
 };
 
 const getLastEmotion = () => {
-  return getActiveCharacter().response.emotion;
+  return getActiveCharacter().response!.emotion;
 };

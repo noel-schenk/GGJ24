@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef } from 'react';
-import { MapWrapper, RootScene, Player } from './Map.styled';
+import { MapWrapper, RootScene, Player, MapBackground } from './Map.styled';
 import Tile from '../Tile/Tile';
 import useMapState from '../../states/MapState';
 import { keyDownHandler, keyUpHandler, resetInput, tick } from '../../logic/controlls';
@@ -33,6 +33,18 @@ const Map: FC<MapProps> = () => {
    }, [state.dt]);
 
    return <MapWrapper ref={mapRef as any}>
+      <MapBackground
+         className={clsx({
+            move: state.player.moveDirection !== undefined,
+            up: state.player.moveDirection === Direction.up,
+            down: state.player.moveDirection === Direction.down,
+            left: state.player.moveDirection === Direction.left,
+            right: state.player.moveDirection === Direction.right,
+         })} style={{
+            left: `calc(50vw - 5.5em + ${-state.player.position[0]}em)`,
+            top: `calc(50vh - 5.5em + ${-state.player.position[1]}em)`,
+         }}
+      ></MapBackground>
       <Player className={clsx({
          up: state.player.direction === Direction.up,
          down: state.player.direction === Direction.down,

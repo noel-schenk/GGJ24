@@ -22,9 +22,11 @@ const tileOffsets = {
   "\\": vec2.fromValues(-6, 0),
   "=": vec2.fromValues(-7, 0),
   "#": vec2.fromValues(-9, 0),
+  "*": vec2.fromValues(-8, -1),
 };
 const tileCollision = {
   "#": CollisionType.OVERLAP,
+  "*": CollisionType.OVERLAP,
 };
 
 export function generateMap(mapData = DemoMap) {
