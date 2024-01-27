@@ -28,8 +28,8 @@ export const sendMessage = async (message: string) => {
   };
 
   useGlobalState.set(
-    "newCharacterResponse",
-    useGlobalState.get("newCharacterResponse") + 1
+    "activeCharacter--response",
+    useGlobalState.get("activeCharacter--response") + 1
   );
 };
 

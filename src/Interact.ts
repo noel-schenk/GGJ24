@@ -15,7 +15,7 @@ export const interact = async (
   });
 };
 
-useGlobalState.subscribe("newCharacterResponse", () => {
+useGlobalState.subscribe("activeCharacter--response", () => {
   if (!resolve) {
     return;
   }
@@ -24,7 +24,10 @@ useGlobalState.subscribe("newCharacterResponse", () => {
     useGlobalState.get("activeCharacter").response
   );
 
-  playTTS(useGlobalState.get("activeCharacter").response.text, useGlobalState.get('activeCharacter').voice);
+  playTTS(
+    useGlobalState.get("activeCharacter").response.text,
+    useGlobalState.get("activeCharacter").voice
+  );
 
   resolve(useGlobalState.get("activeCharacter").response);
   resolve = undefined;
