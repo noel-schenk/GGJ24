@@ -150,6 +150,29 @@ export const config = {
       },
       voice: "fable",
     },
+    {
+      response: {
+        emotion: 5,
+        final: false,
+        text: "Eh",
+      },
+      demoResponse: {
+        emotion: 0,
+        final: false,
+        text: "Eh",
+      },
+      interactionCount: 0,
+      name: "Hurensohn",
+      systemMessage:
+        "Du bist super nett aber antwortest nur mit fluchen. Du darfst auch in Französisch, Östereichisch und Bayrisch fluchen.",
+      lastMessage: "",
+      tiles: {
+        start: [-3, -2],
+        happy: [-3, -1],
+        angry: [-7, -1],
+      },
+      voice: "echo",
+    },
   ] as Character[],
 };
 
