@@ -11,7 +11,7 @@ const Menu: FC<MenuProps> = () => {
 
    return <MenuWrapper>
       <div className='Menu__Interaction'>
-         <h1>Freude im Traurigen Dorf</h1>
+         <h1>Bring Freude ins traurige Dorf</h1>
          <p>In einem Dorf, so trüb und leer,<br />
             kamst du her, die Herzen schwer.<br />
             Dein Ziel so klar, ein lichter Schein,<br />
