@@ -3,7 +3,6 @@ import { CharactersProd } from "./config.characters.prod";
 import { CharactersTesting } from "./config.characters.test";
 import { CharactersZombie } from "./config.zombie.prod";
 import { CharactersHate } from "./config.hate.prod";
-import env from "./env";
 import { View } from "./types";
 import { CharactersLaugh } from "./config.laugh.prod";
 import { CharactersFun } from "./config.fun.prod";
@@ -27,7 +26,7 @@ const altMode = () => {
 export const config = () => {
   return {
     initialView: View.MENU,
-    gptKey: env.GPT_KEY,
+    gptKey: "",
     gptModel: "gpt-3.5-turbo",
     basisSystemMessage: `Du bist eine Spielfigur, wie sie unten beschrieben ist.
     Du wirst nur mit dem antworten, was dieser Charakter antworten würde.
