@@ -33,8 +33,8 @@ const Stopwatch: FC<StopwatchProps> = () => {
 export default Stopwatch;
 
 export const formatMilliseconds = (timestamp: number, update: number) => {
-   console.log(update);
-
+   let x = update;
+   x = 0;
    var now = Date.now();
    var elapsed = now - timestamp;
 
