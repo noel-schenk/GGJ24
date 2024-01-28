@@ -145,8 +145,7 @@ export function handleInteraction() {
             checkFinish();
             return;
           }
-          if (emotion > 10) {
-            character.active = false;
+          if (emotion > 8) {
             vec2.copy(tile.offset, character.tiles.happy);
             checkFinish();
             return;
