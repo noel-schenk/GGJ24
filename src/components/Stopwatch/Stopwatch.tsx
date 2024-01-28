@@ -34,7 +34,9 @@ export default Stopwatch;
 
 export const formatMilliseconds = (timestamp: number, update: number) => {
    let x = update;
-   x = 0;
+   let y = x;
+   x = y;
+
    var now = Date.now();
    var elapsed = now - timestamp;
 
