@@ -22,7 +22,7 @@ useGlobalState.subscribe("activeCharacter--response", () => {
     return;
   }
 
-  playTTS(getActiveCharacter().response.text, getActiveCharacter().voice);
+  playTTS(getActiveCharacter().response!.text, getActiveCharacter().voice);
 
   resolve(getActiveCharacter().response);
   resolve = undefined;

@@ -9,9 +9,9 @@ bbbbb  b         bbbbbbb 5    bbbbb      bb  bb    bb  bb   bb  bb
 bbbbb     b     bbbbbbbb  b   bbbbb      bb  bbbbbbbb  bb    bb bb                                            
 bbbbb987           bbbbbb    bbbbbb      bb  bb    bb  bb     bbbb                                            
 bbbbb         b     bb      bbbbbbb      bb  bb    bb  bb      bbb                                            
-bbbbb b   \\                  bbbbb                                                                            
-bbbbb    ||\\    b    \\   b   bbbb        bbbbbb     bbbbbbb   bb       bb bbbbbb     bbbbbbb   bb       bb    
-bbbbb   |==|        ||\\     bbbbbb       b    bb   bb     bb  bb       bb b    bb   bb     bb  bb       bb    
+bbbbb b  /\\                  bbbbb                                                                            
+bbbbb   /||\\    b   /\\   b   bbbb        bbbbbb     bbbbbbb   bb       bb bbbbbb     bbbbbbb   bb       bb    
+bbbbb   |==|       /||\\     bbbbbb       b    bb   bb     bb  bb       bb b    bb   bb     bb  bb       bb    
 bbbbb   |=#|       |==|    bbbbbbbb      b    bb  bb       bb bb   b   bb b    bb  bb       bb bb   b   bb    
 bbbbb            3g|=#|4    bbbbbbb      bbbbbb   bb       bb bb  bbb  bb bbbbbb   bb       bb bb  bbb  bb    
 bbbbmmm     b       s    b   bbbbbb      b     bb bb       bb bb bb bb bb b     bb bb       bb bb bb bb bb    

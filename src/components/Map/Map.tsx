@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { MapWrapper, RootScene, Player, MapBackground } from './Map.styled';
 import Tile from '../Tile/Tile';
 import useMapState from '../../states/MapState';

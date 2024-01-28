@@ -32,7 +32,6 @@ export const MapBackground = styled.div`
   opacity: 1;
   transition: opacity 3s ease-in-out;
 
-
   &.Map__ZoomOut {
     opacity: 0;
   }
@@ -158,7 +157,7 @@ export const Player = styled.div`
   transform: translateX(calc(50vw - 0.5em)) translateY(calc(50vh - 0.5em));
   background: url(${image});
   background-size: 10em;
-  background-position-y: -1em;
+  background-position-y: -3em;
 
   &.up {
     background-position-x: -0em;

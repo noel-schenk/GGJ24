@@ -5,7 +5,7 @@ import image from "../assets/spriteatlas.png";
 import { vec2 } from "gl-matrix";
 import { Character } from "../types";
 import config from "../config";
-import useGlobalState, { getActiveCharacter } from "../GlobalState";
+import useGlobalState from "../GlobalState";
 
 export enum CollisionType {
   BLOCK,

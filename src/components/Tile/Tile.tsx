@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { MessageWrapper, TileWrapper } from './Tile.styled';
 import { Direction, Tiles } from '../../types';
 import { vec2 } from 'gl-matrix';
