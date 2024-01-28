@@ -9,6 +9,7 @@ export default defineConfig({
     esbuildOptions: {
       define: {
         global: "globalThis",
+        Buffer: "Buffer",
       },
       plugins: [
         NodeGlobalsPolyfillPlugin({
@@ -16,5 +17,8 @@ export default defineConfig({
         }),
       ],
     },
+  },
+  build: {
+    minify: false,
   },
 });
