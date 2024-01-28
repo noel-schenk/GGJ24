@@ -30,7 +30,7 @@ const Menu: FC<MenuProps> = () => {
             </select>
             <button onClick={() => state.set('show', [View.MAIN])}>Continue</button>
          </div>
-         <p><small>Entwickelt von Jan, Bowbow und Noel am GGJ 2024<br />ps. versucht mal folgende Cheats wenn ihr mit einem Charakter quatscht: [laugh, hate, zombie, fun]</small></p>
+         <p><small>Entwickelt von Jan, Bowbow und Noel am GGJ 2024<br />ps. versucht mal folgende Cheats wenn ihr mit einem Charakter quatscht: [laugh, hate, zombie, fun]<br/>Du kannst uns böse machen, uns zum lachen bringen und du kannst uns glücklich machen.</small></p>
       </div>
       <img className='Menu__Cover' src={IntroPng} />
    </MenuWrapper>
